@@ -115,10 +115,6 @@ The application will open in your default web browser.
 3. View all DNS records found.
 
 ---
-## Screenshots 📸
-*(Add screenshots of your app in action here)*
-
----
 ## Disclaimer ⚠️
 This tool is meant for **educational and security research purposes only**. Unauthorized scanning of networks you do not own or have explicit permission to test **is illegal** and punishable under cyber laws.
 
