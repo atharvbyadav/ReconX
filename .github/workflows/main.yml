@@ -3,23 +3,14 @@ name: Deploy NetSec to GitHub Pages
 on:
   push:
     branches:
-      - main  # Change this if your default branch is different
-
+      - main  # Adjust if your default branch is different
   pull_request:
     branches:
       - main
 
-  workflow_dispatch:  # Allows manual trigger
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -27,29 +18,34 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'  # Ensure correct Python version
+          python-version: '3.x'
 
       - name: Install Dependencies
-        run: pip install -r requirements.txt
-
-      - name: Generate Static Files
         run: |
-          mkdir -p build
-          echo "<h1>NetSec Scanner Deployment</h1><p>This is a placeholder page until proper hosting is configured.</p>" > build/index.html
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-      - name: Upload GitHub Pages Artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: build
+      - name: Install Streamlit & Dependencies
+        run: |
+          pip install streamlit
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      - name: Create Streamlit Config for GitHub Pages
+        run: |
+          mkdir -p ~/.streamlit/
+          echo "[server]" > ~/.streamlit/config.toml
+          echo "headless = true" >> ~/.streamlit/config.toml
+          echo "port = \$PORT" >> ~/.streamlit/config.toml
+          echo "enableCORS = false" >> ~/.streamlit/config.toml
+          echo "[theme]" >> ~/.streamlit/config.toml
+          echo "base = 'light'" >> ~/.streamlit/config.toml
 
-    steps:
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./  # Streamlit runs from the root directory
+
+      - name: Run Streamlit App (Debugging Purpose)
+        run: |
+          streamlit run NetSec.py &
+          sleep 10
