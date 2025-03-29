@@ -42,7 +42,7 @@ jobs:
       - name: Prepare Build Directory
         run: |
           mkdir -p build  # Ensure the build directory exists
-          cp -r * build/  # Copy all necessary files to the build folder
+          rsync -av --exclude=build --exclude=.git ./ build/
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
