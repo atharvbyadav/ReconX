@@ -118,7 +118,7 @@ def dns_enumeration(domain):
     return records
 
 def main():
-    st.title("🔍 ReconX 111 - Network Security Toolkit")
+    st.title("🔍 ReconX - Network Security Toolkit")
 
     if selected_tab == "Port Scanning":
         st.header("Port Scanning")
