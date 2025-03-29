@@ -39,8 +39,14 @@ jobs:
           echo "[theme]" >> ~/.streamlit/config.toml
           echo "base = 'light'" >> ~/.streamlit/config.toml
 
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-artifact
+          path: ./build/
+
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-main@v4
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./  # Streamlit runs from the root directory
