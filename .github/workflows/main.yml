@@ -39,11 +39,10 @@ jobs:
           echo "[theme]" >> ~/.streamlit/config.toml
           echo "base = 'light'" >> ~/.streamlit/config.toml
 
-      - name: Upload artifact3
-        uses: actions/upload-artifact@v3
-        with:
-          name: my-artifact3
-          path: ./build/
+      - name: Prepare Build Directory
+        run: |
+          mkdir -p build  # Ensure the build directory exists
+          cp -r * build/  # Copy all necessary files to the build folder
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
