@@ -27,21 +27,18 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'  # Change this if needed
+          python-version: '3.x'  # Ensure correct Python version
 
       - name: Install Dependencies
-        run: |
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
 
-      - name: Build the Streamlit App
+      - name: Generate Static Files
         run: |
           mkdir -p build
-          streamlit run netsec_scanner.py &  # Runs in the background
-          sleep 10  # Wait for the app to start
-          wget -r -np -P build http://localhost:8501
+          echo "<h1>NetSec Scanner Deployment</h1><p>This is a placeholder page until proper hosting is configured.</p>" > build/index.html
 
       - name: Upload GitHub Pages Artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v1
         with:
           path: build
 
@@ -55,4 +52,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v3
+        uses: actions/deploy-pages@v2
