@@ -9,7 +9,7 @@ import dns.reversename
 import io
 
 # Streamlit page config
-st.set_page_config(page_title="NetSec Scanner", layout="wide")
+st.set_page_config(page_title="ReconX Scan", layout="wide")
 
 # Sidebar Setup
 st.sidebar.title("🔍 Network Security Toolkit")
@@ -118,7 +118,7 @@ def dns_enumeration(domain):
     return records
 
 def main():
-    st.title("🔍 NetSec - Network Security Toolkit")
+    st.title("🔍 ReconX - Network Security Toolkit")
 
     if selected_tab == "Port Scanning":
         st.header("Port Scanning")

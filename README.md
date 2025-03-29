@@ -1,4 +1,4 @@
-# NetSec Scanner - Network Security Toolkit 🔍
+# ReconX Scan - Network Security Toolkit 🔍
 
 ## Table of Contents 📑
 1. [Overview](#overview-)
@@ -15,12 +15,12 @@
 ---
 
 ## Overview 📌
-**NetSec Scanner** is an advanced **network security toolkit** built with **Streamlit** that provides a user-friendly interface for cybersecurity tasks. This tool helps security analysts, penetration testers, and IT professionals perform essential network reconnaissance and security assessments.
+**ReconX Scan** is an advanced **network security toolkit** built with **Streamlit** that provides a user-friendly interface for cybersecurity tasks. This tool helps security analysts, penetration testers, and IT professionals perform essential network reconnaissance and security assessments.
 
 ## Author ✍️
 Created by **Atharv Yadav** - [GitHub Profile](https://github.com/atharvbyadav)
 
-GitHub Repository: [NetSec](https://github.com/atharvbyadav/NetSec)
+GitHub Repository: [ReconX](https://github.com/atharvbyadav/ReconX)
 
 ## Features 🚀
 ### 1️⃣ **Port Scanning**
@@ -70,8 +70,8 @@ Ensure you have **Python 3.x** installed on your system.
 
 ### Step 1️⃣ - Clone the Repository
 ```sh
-$ git clone https://github.com/atharvbyadav/NetSec.git
-$ cd NetSec
+$ git clone https://github.com/atharvbyadav/ReconX.git
+$ cd ReconX
 ```
 
 ### Step 2️⃣ - Install Dependencies
@@ -81,7 +81,7 @@ $ pip install -r requirements.txt
 
 ### Step 3️⃣ - Run the Application
 ```sh
-$ streamlit run netsec_scanner.py
+$ streamlit run ReconX.py
 ```
 
 The application will open in your default web browser.
