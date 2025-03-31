@@ -7,10 +7,9 @@
 4. [Theory Behind The Features](#theory-behind-the-features-)
 5. [Installation & Usage](#installation--usage-)
 6. [Usage Guide](#usage-guide-)
-7. [Screenshots](#screenshots-)
-8. [Disclaimer](#disclaimer-)
-9. [Contributing](#contributing-)
-10. [License](#license-)
+7. [Disclaimer](#disclaimer-)
+8. [Contributing](#contributing-)
+9. [License](#license-)
 
 ---
 
