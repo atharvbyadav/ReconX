@@ -17,7 +17,7 @@
 ## Overview 📌
 **ReconX Scan** is an advanced **network security toolkit** built with **Streamlit** that provides a user-friendly interface for cybersecurity tasks. This tool helps security analysts, penetration testers, and IT professionals perform essential network reconnaissance and security assessments.
 
-🚀 **Live Demo**: [ExpenseMate](https://expensemate.streamlit.app/)
+🚀 **Live Demo**: [ReconX](https://reconx.streamlit.app/)
 
 ## Author ✍️
 Created by **Atharv Yadav** - [GitHub Profile](https://github.com/atharvbyadav)
