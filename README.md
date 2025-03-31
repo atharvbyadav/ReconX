@@ -70,18 +70,18 @@ Ensure you have **Python 3.x** installed on your system.
 
 ### Step 1️⃣ - Clone the Repository
 ```sh
-$ git clone https://github.com/atharvbyadav/ReconX.git
-$ cd ReconX
+git clone https://github.com/atharvbyadav/ReconX.git
+cd ReconX
 ```
 
 ### Step 2️⃣ - Install Dependencies
 ```sh
-$ pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ### Step 3️⃣ - Run the Application
 ```sh
-$ streamlit run ReconX.py
+streamlit run ReconX.py
 ```
 
 The application will open in your default web browser.
