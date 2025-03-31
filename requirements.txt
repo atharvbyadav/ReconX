@@ -1,4 +1,5 @@
-streamlit
 requests
-whois
+streamlit
+python-whois
 dnspython
+pandas

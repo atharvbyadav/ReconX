@@ -91,13 +91,14 @@ def scan_target(ip):
             if service_info["risk"] != "None" or "Outdated Service" in outdated_status:
                 vulnerable_ports.append([port, service_info["name"], outdated_status, service_info["risk"]])
         port_queue.task_done()
-
+      
 def whois_lookup(target):
     try:
         result = whois.whois(target)
-        return result.text
+        return result.text if hasattr(result, "text") else str(result)
     except Exception as e:
         return f"Error fetching WHOIS data: {str(e)}"
+
 
 def reverse_dns_lookup(ip):
     try:
