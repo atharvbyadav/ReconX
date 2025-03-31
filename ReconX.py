@@ -103,7 +103,7 @@ def reverse_dns_lookup(ip):
     try:
         rev_name = dns.reversename.from_address(ip)
         response = dns.resolver.resolve(rev_name, "PTR")
-        return response[0].to_text()  # Convert response to string
+        return response[0].to_text().rstrip('.')  # Remove the trailing dot
     except dns.resolver.NXDOMAIN:
         return "No PTR record found (Non-existent domain)"
     except dns.resolver.Timeout:
