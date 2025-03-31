@@ -8,6 +8,8 @@ import dns.resolver
 import dns.reversename
 import io
 
+
+
 # Streamlit page config
 st.set_page_config(page_title="ReconX Scan", layout="wide")
 
@@ -35,22 +37,45 @@ VULNERABLE_SERVICES = {
     3306: {"name": "MySQL", "risk": "Check for Default Credentials"},
 }
 
+import socket
+
 def detect_os(ip):
-    global os_guess
-    try:
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.settimeout(1)
-        s.connect((ip, 80))
-        s.send(b'\x16\x03\x01')
-        response = s.recv(1024)
-        s.close()
-        if response:
-            os_guess = "Linux/Unix or Windows Server"
-        else:
-            os_guess = "Unknown"
-        return os_guess
-    except:
-        return "Unknown"
+    os_fingerprint = "Unknown OS"
+    service_banners = {}
+
+    # Common OS-specific ports
+    os_ports = {
+        22: "Linux (SSH detected)",
+        135: "Windows (RPC detected)",
+        139: "Windows (NetBIOS detected)",
+        443: "General Web Server (Could be Linux or Windows)",
+        3389: "Windows (RDP detected)"
+    }
+
+    # Scan for these ports and grab banners
+    for port in os_ports.keys():
+        try:
+            s = socket.socket()
+            s.settimeout(1)
+            s.connect((ip, port))
+            banner = s.recv(1024).decode("utf-8", errors="ignore").strip()
+            s.close()
+
+            if banner:
+                service_banners[port] = banner
+            else:
+                service_banners[port] = "No Banner"
+
+        except:
+            service_banners[port] = "Port Closed"
+
+    # OS Fingerprinting Based on Detected Banners
+    for port, banner in service_banners.items():
+        if port in os_ports and banner != "Port Closed":
+            os_fingerprint = os_ports[port]  # Assign OS guess based on open port
+            break  # Stop checking after first hit
+
+    return os_fingerprint, service_banners
 
 def check_open_port(ip, port):
     try:
@@ -151,9 +176,16 @@ def main():
     elif selected_tab == "OS Fingerprinting":
         st.header("OS Fingerprinting")
         ip = st.text_input("Enter Target IP for OS Fingerprinting:", "192.168.1.1")
+
         if st.button("Detect OS"):
-            os_guess = detect_os(ip)
+            os_guess, banners = detect_os(ip)
+
             st.write(f"### OS Detected: {os_guess}")
+        
+            with st.expander("Detected Services & Banners"):
+                for port, banner in banners.items():
+                    st.write(f"**Port {port}:** {banner}")
+
             st.success("OS Fingerprinting Complete!")
 
     elif selected_tab == "Whois Lookup":
