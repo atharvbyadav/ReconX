@@ -8,8 +8,6 @@ import dns.resolver
 import dns.reversename
 import io
 
-
-
 # Streamlit page config
 st.set_page_config(page_title="ReconX Scan", layout="wide")
 
