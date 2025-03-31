@@ -99,13 +99,19 @@ def whois_lookup(target):
     except Exception as e:
         return f"Error fetching WHOIS data: {str(e)}"
 
-
 def reverse_dns_lookup(ip):
     try:
         rev_name = dns.reversename.from_address(ip)
-        return str(dns.resolver.resolve(rev_name, "PTR")[0])
-    except:
-        return "No Reverse DNS Found"
+        response = dns.resolver.resolve(rev_name, "PTR")
+        return response[0].to_text()  # Convert response to string
+    except dns.resolver.NXDOMAIN:
+        return "No PTR record found (Non-existent domain)"
+    except dns.resolver.Timeout:
+        return "DNS request timed out"
+    except dns.resolver.NoAnswer:
+        return "No answer for the DNS query"
+    except dns.exception.DNSException as e:
+        return f"DNS Error: {str(e)}"
 
 def dns_enumeration(domain):
     records = {}
