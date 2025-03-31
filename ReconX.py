@@ -181,12 +181,19 @@ def main():
             os_guess, banners = detect_os(ip)
 
             st.write(f"### OS Detected: {os_guess}")
+
+            # Only show open ports with banners
+            open_ports = {port: banner for port, banner in banners.items() if banner != "Port Closed"}
         
-            with st.expander("Detected Services & Banners"):
-                for port, banner in banners.items():
-                    st.write(f"**Port {port}:** {banner}")
+            if open_ports:
+                with st.expander("Detected Services & Banners"):
+                    for port, banner in open_ports.items():
+                        st.write(f"**Port {port}:** {banner}")
+            else:
+                st.write("⚠️ No open service banners detected.")
 
             st.success("OS Fingerprinting Complete!")
+
 
     elif selected_tab == "Whois Lookup":
         st.header("Whois Lookup")
