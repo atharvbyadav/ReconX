@@ -7,20 +7,21 @@
 4. [Theory Behind The Features](#theory-behind-the-features-)
 5. [Installation & Usage](#installation--usage-)
 6. [Usage Guide](#usage-guide-)
-7. [Screenshots](#screenshots-)
-8. [Disclaimer](#disclaimer-)
-9. [Contributing](#contributing-)
-10. [License](#license-)
+7. [Disclaimer](#disclaimer-)
+8. [Contributing](#contributing-)
+9. [License](#license-)
 
 ---
 
 ## Overview 📌
 **ReconX Scan** is an advanced **network security toolkit** built with **Streamlit** that provides a user-friendly interface for cybersecurity tasks. This tool helps security analysts, penetration testers, and IT professionals perform essential network reconnaissance and security assessments.
 
+🚀 **Live Demo**: [ReconX](https://reconx.streamlit.app/)
+
 ## Author ✍️
 Created by **Atharv Yadav** - [GitHub Profile](https://github.com/atharvbyadav)
 
-GitHub Repository: [ReconX](https://github.com/atharvbyadav/ReconX)
+🔗GitHub Repository: [ReconX](https://github.com/atharvbyadav/ReconX)
 
 ## Features 🚀
 ### 1️⃣ **Port Scanning**
@@ -70,18 +71,18 @@ Ensure you have **Python 3.x** installed on your system.
 
 ### Step 1️⃣ - Clone the Repository
 ```sh
-$ git clone https://github.com/atharvbyadav/ReconX.git
-$ cd ReconX
+git clone https://github.com/atharvbyadav/ReconX.git
+cd ReconX
 ```
 
 ### Step 2️⃣ - Install Dependencies
 ```sh
-$ pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ### Step 3️⃣ - Run the Application
 ```sh
-$ streamlit run ReconX.py
+streamlit run ReconX.py
 ```
 
 The application will open in your default web browser.

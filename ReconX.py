@@ -9,6 +9,8 @@ import dns.reversename
 import io
 import requests
 
+
+
 # Streamlit page config
 st.set_page_config(page_title="ReconX Scan", layout="wide")
 
@@ -36,22 +38,45 @@ VULNERABLE_SERVICES = {
     3306: {"name": "MySQL", "risk": "Check for Default Credentials"},
 }
 
+import socket
+
 def detect_os(ip):
-    global os_guess
-    try:
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.settimeout(1)
-        s.connect((ip, 80))
-        s.send(b'\x16\x03\x01')
-        response = s.recv(1024)
-        s.close()
-        if response:
-            os_guess = "Linux/Unix or Windows Server"
-        else:
-            os_guess = "Unknown"
-        return os_guess
-    except:
-        return "Unknown"
+    os_fingerprint = "Unknown OS"
+    service_banners = {}
+
+    # Common OS-specific ports
+    os_ports = {
+        22: "Linux (SSH detected)",
+        135: "Windows (RPC detected)",
+        139: "Windows (NetBIOS detected)",
+        443: "General Web Server (Could be Linux or Windows)",
+        3389: "Windows (RDP detected)"
+    }
+
+    # Scan for these ports and grab banners
+    for port in os_ports.keys():
+        try:
+            s = socket.socket()
+            s.settimeout(1)
+            s.connect((ip, port))
+            banner = s.recv(1024).decode("utf-8", errors="ignore").strip()
+            s.close()
+
+            if banner:
+                service_banners[port] = banner
+            else:
+                service_banners[port] = "No Banner"
+
+        except:
+            service_banners[port] = "Port Closed"
+
+    # OS Fingerprinting Based on Detected Banners
+    for port, banner in service_banners.items():
+        if port in os_ports and banner != "Port Closed":
+            os_fingerprint = os_ports[port]  # Assign OS guess based on open port
+            break  # Stop checking after first hit
+
+    return os_fingerprint, service_banners
 
 def check_open_port(ip, port):
     try:
@@ -92,20 +117,27 @@ def scan_target(ip):
             if service_info["risk"] != "None" or "Outdated Service" in outdated_status:
                 vulnerable_ports.append([port, service_info["name"], outdated_status, service_info["risk"]])
         port_queue.task_done()
-
+      
 def whois_lookup(target):
     try:
         result = whois.whois(target)
-        return result.text
+        return result.text if hasattr(result, "text") else str(result)
     except Exception as e:
         return f"Error fetching WHOIS data: {str(e)}"
 
 def reverse_dns_lookup(ip):
     try:
         rev_name = dns.reversename.from_address(ip)
-        return str(dns.resolver.resolve(rev_name, "PTR")[0])
-    except:
-        return "No Reverse DNS Found"
+        response = dns.resolver.resolve(rev_name, "PTR")
+        return response[0].to_text().rstrip('.')  # Remove the trailing dot
+    except dns.resolver.NXDOMAIN:
+        return "No PTR record found (Non-existent domain)"
+    except dns.resolver.Timeout:
+        return "DNS request timed out"
+    except dns.resolver.NoAnswer:
+        return "No answer for the DNS query"
+    except dns.exception.DNSException as e:
+        return f"DNS Error: {str(e)}"
 
 def dns_enumeration(domain):
     records = {}
@@ -154,10 +186,24 @@ def main():
     elif selected_tab == "OS Fingerprinting":
         st.header("OS Fingerprinting")
         ip = st.text_input("Enter Target IP for OS Fingerprinting:", "192.168.1.1")
+
         if st.button("Detect OS"):
-            os_guess = detect_os(ip)
+            os_guess, banners = detect_os(ip)
+
             st.write(f"### OS Detected: {os_guess}")
+
+            # Only show open ports with banners
+            open_ports = {port: banner for port, banner in banners.items() if banner != "Port Closed"}
+        
+            if open_ports:
+                with st.expander("Detected Services & Banners"):
+                    for port, banner in open_ports.items():
+                        st.write(f"**Port {port}:** {banner}")
+            else:
+                st.write("⚠️ No open service banners detected.")
+
             st.success("OS Fingerprinting Complete!")
+
 
     elif selected_tab == "Whois Lookup":
         st.header("Whois Lookup")
