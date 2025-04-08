@@ -7,6 +7,7 @@ import whois
 import dns.resolver
 import dns.reversename
 import io
+import requests
 
 # Streamlit page config
 st.set_page_config(page_title="ReconX Scan", layout="wide")
@@ -14,7 +15,7 @@ st.set_page_config(page_title="ReconX Scan", layout="wide")
 # Sidebar Setup
 st.sidebar.title("🔍 Network Security Toolkit")
 st.sidebar.write("Navigate:")
-selected_tab = st.sidebar.radio("Select a feature:", ["Port Scanning", "OS Fingerprinting", "Whois Lookup", "Reverse DNS Lookup", "DNS Enumeration"], index=0)
+selected_tab = st.sidebar.radio("Select a feature:", ["Port Scanning", "OS Fingerprinting", "Whois Lookup", "Reverse DNS Lookup", "DNS Enumeration", "GetUrl"], index=0)
 
 # Number of threads for parallel scanning
 THREAD_COUNT = 50
@@ -147,6 +148,15 @@ def dns_enumeration(domain):
             records[record] = "No Record Found"
     return records
 
+def get_url(domain):
+    try:
+        url = f"https://{domain}"
+        response = requests.get(url)
+        return response.text
+    except:
+        return "No URL Found"   
+    
+
 def main():
     st.title("🔍 ReconX - Network Security Toolkit")
 
@@ -220,6 +230,15 @@ def main():
                             st.write(f"- {item}")
                     else:
                         st.write(f"- {value}")
+
+
+    elif selected_tab == "GetUrl":
+        st.header("Get URL")
+        domain = st.text_input("Enter Domain:", "example.com")
+        if st.button("Get URL"):
+            url = get_url(domain)
+            st.write(f"**URL:** {url}")
+            st.success("URL Lookup Complete!")
 
 if __name__ == "__main__":
     main()
