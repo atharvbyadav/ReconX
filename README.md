@@ -124,6 +124,7 @@ Use this tool **responsibly and ethically**!
 ---
 ## Contributing 🤝
 We welcome contributions! Feel free to **fork this repository**, improve the tool, and submit a **pull request**.
+Reach out for Ideas and Suggetions...
 
 ---
 ## License 📜
