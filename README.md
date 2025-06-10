@@ -8,7 +8,7 @@
 
 ---
 
-![ReconX Banner](https://your-image-link.com/banner.png)
+<!-- ![ReconX Banner](https://your-image-link.com/banner.png) -->
 
 ---
 
