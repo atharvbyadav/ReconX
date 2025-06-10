@@ -16,8 +16,9 @@
 ---
 
 <p align="center">
-  <img src="https://github.com/atharvbyadav/ReconX/blob/main/assets/ReconX.png" alt="ReconX Banner" style="max-width: 50%; height: auto;" />
+  <img src="https://github.com/atharvbyadav/ReconX/blob/main/assets/ReconX.png" alt="ReconX Banner" width="400"/>
 </p>
+
 
 ---
 
