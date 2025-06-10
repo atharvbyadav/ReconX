@@ -15,9 +15,25 @@
 
 ---
 
-  <div style="flex: 1; min-width: 300px;" align="right">
-    <img src="https://github.com/atharvbyadav/ReconX/blob/main/assets/ReconX.png" alt="ReconX Banner" width="100%" style="max-width: 400px; border-radius: 8px;"/>
-  </div>
+<table>
+  <tr>
+    <td style="width: 60%; vertical-align: top;">      
+      <h2>📌 Overview</h2>
+      <p><strong>ReconX</strong> is your <strong>all-in-one network reconnaissance and analysis toolkit</strong>, designed for <strong>penetration testers, ethical hackers, red teamers</strong>, and <strong>cybersecurity enthusiasts</strong>.</p>
+      <p>
+      Built with <strong>Streamlit</strong>, ReconX offers a modern web-based interface for carrying out essential reconnaissance tasks that are typically scattered across multiple tools. From scanning ports and fingerprinting operating systems to performing detailed DNS enumeration and WHOIS lookups, this tool empowers users to perform passive and active recon with minimal setup and no steep learning curve.
+      </p>
+      <p>
+      Whether you're auditing your infrastructure, preparing for a Capture The Flag (CTF), or conducting OSINT, <strong>ReconX</strong> simplifies your recon workflow — responsibly and effectively.
+      </p>
+      🔗 <strong>Live Demo:</strong> [ReconX Web App](https://reconx.streamlit.app/)<br>
+      📂 <strong>Repository:</strong> [ReconX GitHub](https://github.com/atharvbyadav/ReconX)      
+    </td>
+    <td style="width: 40%; text-align: center;">
+      <img src="https://github.com/atharvbyadav/ReconX/blob/main/assets/ReconX.png" alt="ReconX Banner" width="350"/>
+    </td>
+  </tr>
+</table>
 
 ---
 
