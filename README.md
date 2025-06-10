@@ -1,3 +1,4 @@
+
 # 🛡️ ReconX Scan — Network Security Toolkit
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue.svg)
@@ -84,106 +85,68 @@ git clone https://github.com/atharvbyadav/ReconX.git
 cd ReconX
 ```
 
-Step 2️⃣ - Install Dependencies
+### Step 2️⃣ - Install Dependencies
 ```sh
 pip install -r requirements.txt
 ```
-Step 3️⃣ - Run the Application
+
+### Step 3️⃣ - Run the Application
 ```sh
 streamlit run ReconX.py
 ```
+
 The application will open in your default web browser.
 
-
 ---
 
-📖 Usage Guide
+## 📖 Usage Guide
 
-🔸 Port Scanning
-
-1. Enter the Target IP Address.
-
-
-2. Click Start Port Scan.
-
-
+### 🔸 **Port Scanning**
+1. Enter the **Target IP Address**.
+2. Click **Start Port Scan**.
 3. View the open ports, banners, outdated services, and potential risks.
 
-
-
-🔸 OS Fingerprinting
-
-1. Enter the Target IP Address.
-
-
-2. Click Detect OS.
-
-
+### 🔸 **OS Fingerprinting**
+1. Enter the **Target IP Address**.
+2. Click **Detect OS**.
 3. View the estimated OS of the target.
 
-
-
-🔸 Whois Lookup
-
-1. Enter the Domain or IP Address.
-
-
-2. Click Get WHOIS Info.
-
-
+### 🔸 **Whois Lookup**
+1. Enter the **Domain or IP Address**.
+2. Click **Get WHOIS Info**.
 3. View the WHOIS data fetched from public databases.
 
-
-
-🔸 Reverse DNS Lookup
-
-1. Enter the Target IP Address.
-
-
-2. Click Perform Reverse DNS Lookup.
-
-
+### 🔸 **Reverse DNS Lookup**
+1. Enter the **Target IP Address**.
+2. Click **Perform Reverse DNS Lookup**.
 3. View the associated domain (if any).
 
-
-
-🔸 DNS Enumeration
-
-1. Enter the Domain Name.
-
-
-2. Click Enumerate DNS.
-
-
+### 🔸 **DNS Enumeration**
+1. Enter the **Domain Name**.
+2. Click **Enumerate DNS**.
 3. View all DNS records found.
 
+---
 
+## ⚠️ Disclaimer
 
+This tool is meant for **educational and security research purposes only**. Unauthorized scanning of networks you do not own or have explicit permission to test **is illegal** and punishable under cyber laws.
+
+Use this tool **responsibly and ethically**!
 
 ---
 
-⚠️ Disclaimer
+## 🤝 Contributing
 
-This tool is meant for educational and security research purposes only. Unauthorized scanning of networks you do not own or have explicit permission to test is illegal and punishable under cyber laws.
-
-Use this tool responsibly and ethically!
-
-
----
-
-🤝 Contributing
-
-We welcome contributions! Feel free to fork this repository, improve the tool, and submit a pull request.
+We welcome contributions! Feel free to **fork this repository**, improve the tool, and submit a **pull request**.
 
 Reach out for ideas and suggestions...
 
-
 ---
 
-📜 License
+## 📜 License
 
-This project is licensed under the BSD 3-Clause License.
-
+This project is licensed under the **BSD 3-Clause License**.
 
 ---
 
