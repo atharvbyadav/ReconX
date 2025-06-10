@@ -168,11 +168,11 @@ Have ideas? Open an issue or reach out via the contact links below.
 
 ## 📬 Contact
 
-**👨‍💻 Author**: Atharv Yadav
-**🌐 Website**: [atharvbyadav.github.io](https://atharvbyadav.github.io)
-**🐙 GitHub**: [@atharvbyadav](https://github.com/atharvbyadav)
-**🧠 LinkedIn**: [Atharv Yadav](https://www.linkedin.com/in/atharvbyadav/)
-**💬 Twitter/X**: [@AtharvYadavB](https://x.com/AtharvYadavB)
+- **👨‍💻 Author**: Atharv Yadav
+- **🌐 Website**: [atharvbyadav.github.io](https://atharvbyadav.github.io)
+- **🐙 GitHub**: [@atharvbyadav](https://github.com/atharvbyadav)
+- **🧠 LinkedIn**: [Atharv Yadav](https://www.linkedin.com/in/atharvbyadav/)
+- **💬 Twitter/X**: [@AtharvYadavB](https://x.com/AtharvYadavB)
 
 > *"Collaboration is the backbone of innovation. Let’s build better tools together."*
 
