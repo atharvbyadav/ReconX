@@ -17,7 +17,7 @@
 
 <table border="0" cellspacing="0" cellpadding="0" style="border: none; width: 100%;">
   <tr>
-    <td style="width: 60%; vertical-align: top; padding-right: 20px;">
+    <td style="width: 50%; vertical-align: top; padding-right: 20px;">
       <h2>📌 Overview</h2>
       <p><strong>ReconX</strong> is your <strong>all-in-one network reconnaissance and analysis toolkit</strong>, designed for <strong>penetration testers, ethical hackers, red teamers</strong>, and <strong>cybersecurity enthusiasts</strong>.</p>
       <p>
@@ -29,7 +29,7 @@
       🔗 <strong>Live Demo:</strong> <a href="https://reconx.streamlit.app/">ReconX Web App</a><br>
       📂 <strong>Repository:</strong> <a href="https://github.com/atharvbyadav/ReconX">ReconX GitHub</a>
     </td>
-    <td style="width: 40%; text-align: center; vertical-align: top;">
+    <td style="width: 50%; text-align: center; vertical-align: top;">
       <img src="https://github.com/atharvbyadav/ReconX/blob/main/assets/ReconX.png" alt="ReconX Banner" style="width: 100%; max-width: 420px; height: auto; border-radius: 10px;" />
     </td>
   </tr>
