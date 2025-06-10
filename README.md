@@ -15,7 +15,7 @@
 
 ---
 
-<!-- ![ReconX Banner](https://your-image-link.com/banner.png) -->
+![ReconX Banner](https://github.com/atharvbyadav/ReconX/blob/main/assets/ReconX.png) 
 
 ---
 
