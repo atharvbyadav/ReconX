@@ -1,4 +1,4 @@
-# 🛡️ ReconX — Web-Based Network Reconnaissance Toolkit
+# 🛡️ ReconX — Network Reconnaissance Toolkit
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue.svg)
 ![Streamlit](https://img.shields.io/badge/Built%20With-Streamlit-orange.svg)
