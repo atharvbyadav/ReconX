@@ -15,24 +15,26 @@
 
 ---
 
-<div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 2rem;">
-  <div style="flex: 1 1 60%;">
-    <h2>📌 Overview</h2>
-    <p><strong>ReconX</strong> is your <strong>all-in-one network reconnaissance and analysis toolkit</strong>, designed for <strong>penetration testers, ethical hackers, red teamers</strong>, and <strong>cybersecurity enthusiasts</strong>.</p>
-    <p>
+<table>
+  <tr>
+    <td style="width: 60%; vertical-align: top;">
+      <h2>📌 Overview</h2>
+      <p><strong>ReconX</strong> is your <strong>all-in-one network reconnaissance and analysis toolkit</strong>, designed for <strong>penetration testers, ethical hackers, red teamers</strong>, and <strong>cybersecurity enthusiasts</strong>.</p>
+      <p>
       Built with <strong>Streamlit</strong>, ReconX offers a modern web-based interface for carrying out essential reconnaissance tasks that are typically scattered across multiple tools. From scanning ports and fingerprinting operating systems to performing detailed DNS enumeration and WHOIS lookups, this tool empowers users to perform passive and active recon with minimal setup and no steep learning curve.
-    </p>
-    <p>
+      </p>
+      <p>
       Whether you're auditing your infrastructure, preparing for a Capture The Flag (CTF), or conducting OSINT, <strong>ReconX</strong> simplifies your recon workflow — responsibly and effectively.
-    </p>
-    🔗 <strong>Live Demo:</strong> <a href="https://reconx.streamlit.app/">ReconX Web App</a><br>
-    📂 <strong>Repository:</strong> <a href="https://github.com/atharvbyadav/ReconX">ReconX GitHub</a>
-  </div>
-  <div style="flex: 1 1 35%; text-align: center;">
-    <img src="https://github.com/atharvbyadav/ReconX/blob/main/assets/ReconX.png" alt="ReconX Banner" style="max-width: 100%; height: auto; border-radius: 12px;" />
-  </div>
+      </p>
+      🔗 <strong>Live Demo:</strong> <a href="https://reconx.streamlit.app/">ReconX Web App</a><br>
+      📂 <strong>Repository:</strong> <a href="https://github.com/atharvbyadav/ReconX">ReconX GitHub</a>
+    </td>
+    <td style="width: 40%; text-align: center; vertical-align: top;">
+      <img src="https://github.com/atharvbyadav/ReconX/blob/main/assets/ReconX.png" alt="ReconX Banner" style="width: 100%; max-width: 420px; height: auto; border-radius: 10px;" />
+    </td>
+  </tr>
+</table>
 
-</div>
 
 ---
 
