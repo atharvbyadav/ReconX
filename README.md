@@ -15,16 +15,16 @@
 
 ---
 
-<table>
+<table border="0" cellspacing="0" cellpadding="0" style="border: none; width: 100%;">
   <tr>
-    <td style="width: 60%; vertical-align: top;">
+    <td style="width: 60%; vertical-align: top; padding-right: 20px;">
       <h2>📌 Overview</h2>
       <p><strong>ReconX</strong> is your <strong>all-in-one network reconnaissance and analysis toolkit</strong>, designed for <strong>penetration testers, ethical hackers, red teamers</strong>, and <strong>cybersecurity enthusiasts</strong>.</p>
       <p>
-      Built with <strong>Streamlit</strong>, ReconX offers a modern web-based interface for carrying out essential reconnaissance tasks that are typically scattered across multiple tools. From scanning ports and fingerprinting operating systems to performing detailed DNS enumeration and WHOIS lookups, this tool empowers users to perform passive and active recon with minimal setup and no steep learning curve.
+        Built with <strong>Streamlit</strong>, ReconX offers a modern web-based interface for carrying out essential reconnaissance tasks that are typically scattered across multiple tools. From scanning ports and fingerprinting operating systems to performing detailed DNS enumeration and WHOIS lookups, this tool empowers users to perform passive and active recon with minimal setup and no steep learning curve.
       </p>
       <p>
-      Whether you're auditing your infrastructure, preparing for a Capture The Flag (CTF), or conducting OSINT, <strong>ReconX</strong> simplifies your recon workflow — responsibly and effectively.
+        Whether you're auditing your infrastructure, preparing for a Capture The Flag (CTF), or conducting OSINT, <strong>ReconX</strong> simplifies your recon workflow — responsibly and effectively.
       </p>
       🔗 <strong>Live Demo:</strong> <a href="https://reconx.streamlit.app/">ReconX Web App</a><br>
       📂 <strong>Repository:</strong> <a href="https://github.com/atharvbyadav/ReconX">ReconX GitHub</a>
@@ -34,7 +34,6 @@
     </td>
   </tr>
 </table>
-
 
 ---
 
