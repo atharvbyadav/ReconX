@@ -15,9 +15,28 @@
 
 ---
 
-<p align="center">
-  <img src="https://github.com/atharvbyadav/ReconX/blob/main/assets/ReconX.png" alt="ReconX Banner" width="400"/>
-</p>
+<div style="display: flex; align-items: flex-start; gap: 20px; flex-wrap: wrap;">
+
+  <!-- Left Column: Overview -->
+  <div style="flex: 1; min-width: 300px;">
+
+  <h3>📌 Overview</h3>
+
+  <p><strong>ReconX</strong> is your <strong>all-in-one network reconnaissance and analysis toolkit</strong>, designed for <em>penetration testers, ethical hackers, red teamers</em>, and <em>cybersecurity enthusiasts</em>.</p>
+
+  <p>Built with <strong>Streamlit</strong>, ReconX offers a modern web-based interface for performing critical recon tasks — from port scanning and OS fingerprinting to DNS enumeration and WHOIS lookups. All logic is contained in a single script with modular class-based design for easy debugging and contribution.</p>
+
+  <p><strong>🔗 Live App:</strong> <a href="https://reconx.streamlit.app/">reconx.streamlit.app</a></p>
+  <p><strong>📂 Source Code:</strong> <a href="https://github.com/atharvbyadav/ReconX">GitHub Repository</a></p>
+
+  </div>
+
+  <!-- Right Column: Banner Image -->
+  <div style="flex: 1; min-width: 300px;" align="right">
+    <img src="https://github.com/atharvbyadav/ReconX/blob/main/assets/ReconX.png" alt="ReconX Banner" width="100%" style="max-width: 400px; border-radius: 8px;"/>
+  </div>
+
+</div>
 
 
 ---
