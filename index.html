@@ -16,46 +16,38 @@
       --border: #30363d;
       --soft-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
-
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin: 0; padding: 0; box-sizing: border-box;
     }
-
     body {
       font-family: 'Inter', sans-serif;
       background: var(--primary);
       color: var(--text);
-      line-height: 1.7;
       padding-left: 60px;
+      line-height: 1.7;
     }
+    a { color: var(--accent); text-decoration: none; }
 
     .sidebar {
       position: fixed;
-      left: 0;
-      top: 0;
-      width: 60px;
-      height: 100vh;
-      background-color: var(--bg);
+      left: 0; top: 0;
+      width: 60px; height: 100vh;
+      background: var(--bg);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 20px;
       padding: 20px 0;
+      gap: 24px;
       box-shadow: var(--soft-shadow);
     }
-
     .sidebar i {
       font-size: 1.4rem;
       color: var(--accent);
-      cursor: pointer;
       transition: 0.3s;
+      cursor: pointer;
     }
-
     .sidebar i:hover {
-      color: white;
-      transform: scale(1.2);
+      transform: scale(1.2); color: #fff;
     }
 
     .container {
@@ -68,23 +60,20 @@
       text-align: center;
       margin-bottom: 3rem;
     }
-
     .hero h1 {
       font-size: 2.8rem;
       font-weight: 800;
       color: var(--accent);
-      margin-bottom: 1rem;
     }
-
     .hero p {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
+      margin-top: 1rem;
       color: #9ca3af;
     }
 
     .btn-group {
       margin-top: 2rem;
     }
-
     .btn {
       display: inline-block;
       background: var(--accent);
@@ -94,49 +83,71 @@
       text-decoration: none;
       margin: 0 10px;
       font-weight: 600;
-      transition: 0.3s ease;
+      transition: 0.3s;
     }
-
     .btn:hover {
       background: #1f6feb;
-    }
-
-    section {
-      margin-bottom: 3rem;
     }
 
     .section-title {
       font-size: 2rem;
       font-weight: 600;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       border-bottom: 2px solid var(--accent);
       display: inline-block;
     }
 
+    .badges {
+      margin-top: 1rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .badges img {
+      height: 28px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
     .feature-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 1.5rem;
-      margin-bottom: 1rem;
+      padding: 1.2rem;
       box-shadow: var(--soft-shadow);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s;
     }
-
     .feature-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-6px);
+    }
+    .feature-card i {
+      font-size: 1.5rem;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .feature-card h3 {
+      margin-top: 0.2rem;
+      font-size: 1.1rem;
     }
 
-    .feature-card h3 {
-      color: var(--accent);
-      margin-bottom: 0.5rem;
+    .install-box {
+      background: #0c151f;
+      border-left: 5px solid var(--accent);
+      padding: 1rem 1.5rem;
+      font-family: monospace;
+      border-radius: 8px;
+      margin: 1rem 0;
+      white-space: pre-line;
     }
 
     .screenshot {
       width: 100%;
       border-radius: 8px;
-      box-shadow: var(--soft-shadow);
       margin-top: 1rem;
+      box-shadow: var(--soft-shadow);
     }
 
     footer {
@@ -144,16 +155,19 @@
       font-size: 0.9rem;
       color: #6b7280;
       margin-top: 4rem;
-      padding-bottom: 2rem;
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    footer a {
+      color: var(--accent);
     }
 
     @media(max-width: 768px) {
-      body {
-        padding-left: 0;
-      }
-
-      .sidebar {
-        display: none;
+      body { padding-left: 0; }
+      .sidebar { display: none; }
+      .feature-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -162,79 +176,101 @@
 
   <div class="sidebar">
     <a href="#overview"><i class="fas fa-home"></i></a>
-    <a href="#features"><i class="fas fa-bolt"></i></a>
-    <a href="#screenshots"><i class="fas fa-image"></i></a>
-    <a href="#install"><i class="fas fa-terminal"></i></a>
-    <a href="#license"><i class="fas fa-file-alt"></i></a>
+    <a href="#features"><i class="fas fa-shield-alt"></i></a>
+    <a href="#screenshots"><i class="fas fa-camera-retro"></i></a>
+    <a href="#install"><i class="fas fa-code"></i></a>
+    <a href="#license"><i class="fas fa-file-contract"></i></a>
   </div>
 
   <div class="container">
     <header class="hero">
       <h1>ReconX — Network Security Toolkit</h1>
-      <p>Perform stealthy recon with a Streamlit-powered interface.</p>
+      <p>A powerful, user-friendly recon suite for ethical hackers and red teamers.</p>
       <div class="btn-group">
         <a href="https://reconx.streamlit.app/" target="_blank" class="btn">🔗 Live App</a>
         <a href="https://github.com/atharvbyadav/ReconX" target="_blank" class="btn">📁 GitHub Repo</a>
+      </div>
+      <div class="badges">
+        <img src="https://img.shields.io/badge/License-BSD%203--Clause-blue.svg" alt="BSD License" />
+        <img src="https://img.shields.io/badge/Platform-Streamlit-lightgrey" alt="Platform" />
+        <img src="https://img.shields.io/badge/Python-3.8+-blue" alt="Python 3.8+" />
       </div>
     </header>
 
     <section id="overview">
       <h2 class="section-title">🔍 Overview</h2>
       <p>
-        ReconX is a modern, intuitive, and lightweight recon toolkit designed for ethical hackers, penetration testers, and cybersecurity enthusiasts. Powered by Python and Streamlit, it enables deep scanning, fingerprinting, and DNS intelligence with a simple UI.
+        <strong>ReconX</strong> is a Streamlit-powered reconnaissance suite tailored for penetration testers and cybersecurity researchers. It enables you to perform critical network tests like port scanning, OS fingerprinting, WHOIS lookups, and DNS reconnaissance in an intuitive interface.
+        <br><br>
+        Whether you’re performing pre-engagement recon, gathering target intelligence, or analyzing DNS records for exposure — ReconX helps you do it securely and effectively.
       </p>
     </section>
 
     <section id="features">
       <h2 class="section-title">🚀 Features</h2>
+      <div class="feature-grid">
 
-      <div class="feature-card">
-        <h3>🔹 Port Scanning</h3>
-        <p>Fast multi-threaded scanner for detecting open ports, service banners, and vulnerabilities.</p>
-      </div>
+        <div class="feature-card">
+          <i class="fas fa-network-wired"></i>
+          <h3>Port Scanning</h3>
+          <p>Multi-threaded scanning of IPs to identify open ports, banners, and outdated services.</p>
+        </div>
 
-      <div class="feature-card">
-        <h3>🔹 OS Fingerprinting</h3>
-        <p>Infers whether the target system is Linux or Windows using passive techniques.</p>
-      </div>
+        <div class="feature-card">
+          <i class="fas fa-microchip"></i>
+          <h3>OS Fingerprinting</h3>
+          <p>Uses TCP response patterns to infer Linux/Unix or Windows server environments.</p>
+        </div>
 
-      <div class="feature-card">
-        <h3>🔹 WHOIS Lookup</h3>
-        <p>Retrieve domain/IP ownership data from public registries.</p>
-      </div>
+        <div class="feature-card">
+          <i class="fas fa-globe"></i>
+          <h3>WHOIS Lookup</h3>
+          <p>Extract domain ownership and registry information for a domain or IP.</p>
+        </div>
 
-      <div class="feature-card">
-        <h3>🔹 Reverse DNS Lookup</h3>
-        <p>Maps an IP address to a possible domain name using DNS records.</p>
-      </div>
+        <div class="feature-card">
+          <i class="fas fa-reply"></i>
+          <h3>Reverse DNS Lookup</h3>
+          <p>Translate IP addresses into associated domain names using passive DNS queries.</p>
+        </div>
 
-      <div class="feature-card">
-        <h3>🔹 DNS Enumeration</h3>
-        <p>Extracts DNS records like A, MX, NS, CNAME, TXT for infrastructure analysis.</p>
+        <div class="feature-card">
+          <i class="fas fa-server"></i>
+          <h3>DNS Enumeration</h3>
+          <p>Enumerate records like A, MX, NS, CNAME, TXT to analyze domain infrastructure.</p>
+        </div>
+
       </div>
     </section>
 
     <section id="screenshots">
       <h2 class="section-title">📸 Live Screenshots</h2>
-      <img src="screenshot1.png" alt="ReconX Screenshot 1" class="screenshot" />
-      <img src="screenshot2.png" alt="ReconX Screenshot 2" class="screenshot" />
+      <img src="screenshot1.png" alt="Screenshot 1" class="screenshot" />
+      <img src="screenshot2.png" alt="Screenshot 2" class="screenshot" />
     </section>
 
     <section id="install">
-      <h2 class="section-title">🛠️ Installation</h2>
-      <pre><code>git clone https://github.com/atharvbyadav/ReconX.git
+      <h2 class="section-title">🛠️ Deployment</h2>
+      <p>Clone the repo, install dependencies, and run Streamlit:</p>
+      <div class="install-box">
+git clone https://github.com/atharvbyadav/ReconX.git
 cd ReconX
 pip install -r requirements.txt
-streamlit run ReconX.py</code></pre>
+streamlit run ReconX.py
+      </div>
     </section>
 
     <section id="license">
       <h2 class="section-title">📜 License</h2>
-      <p>This project is licensed under the <strong>BSD 3-Clause License</strong>. Use responsibly and ethically.</p>
+      <p>
+        This project is licensed under the <strong>BSD 3-Clause License</strong>.
+        Use this tool ethically and only for authorized security assessments.
+      </p>
     </section>
 
     <footer>
-      Created by <a href="https://github.com/atharvbyadav" target="_blank" style="color: var(--accent);">Atharv Yadav</a> • © 2025 ReconX
+      Made with ❤️ by <a href="https://github.com/atharvbyadav" target="_blank">Atharv Yadav</a> —
+      <a href="https://github.com/atharvbyadav/ReconX" target="_blank">View on GitHub</a>
     </footer>
   </div>
 
