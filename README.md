@@ -187,10 +187,15 @@ This project is licensed under the BSD 3-Clause License.
 
 ---
 
-📬 Contact Me
+## 📬 Contact
 
-If you have any questions, feedback, or collaboration ideas, feel free to reach out:
+Have ideas, suggestions, or just want to connect?
 
-🔗 GitHub: @atharvbyadav
+* 👨‍💻 Author: **Atharv Yadav**
+* 🌐 Website: [atharvbyadav.github.io](https://atharvbyadav.github.io)
+* 🐙 GitHub: [@atharvbyadav](https://github.com/atharvbyadav)
+* 🧠 Connect: [LinkedIn](https://www.linkedin.com/in/atharvbyadav/) · [X](https://x.com/AtharvYadavB)
 
-🌐 Portfolio: atharvbyadav.github.io
+> *Collaboration is the backbone of innovation. Reach out — let’s build better tools together.*
+
+---
