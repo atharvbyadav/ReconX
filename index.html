@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ReconX — Network Security Toolkit</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0e172c;
+      --accent: #38bdf8;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --card-bg: #1e293b;
+      --header-gradient: linear-gradient(to right, #0ea5e9, #3b82f6);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      background: var(--header-gradient);
+      padding: 4rem 2rem;
+      text-align: center;
+      color: #fff;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: #e2e8f0;
+    }
+
+    .badges {
+      margin-top: 1rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      margin: 0.3rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-size: 0.85rem;
+      border: 1px solid #fff;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .badge:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    nav {
+      position: fixed;
+      top: 5rem;
+      left: 1rem;
+      background: #1e293b;
+      padding: 1rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      max-width: 200px;
+      box-shadow: 0 0 15px #00000033;
+    }
+
+    nav h3 {
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      display: block;
+      margin: 0.4rem 0;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    main {
+      margin-left: 240px;
+      padding: 2rem;
+      max-width: 960px;
+    }
+
+    section {
+      margin-bottom: 4rem;
+    }
+
+    h2 {
+      color: var(--accent);
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #334155;
+      padding-bottom: 0.5rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-left: 4px solid var(--accent);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.2rem;
+    }
+
+    pre {
+      background: #1e293b;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: 'Fira Code', monospace;
+      color: #38bdf8;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    blockquote {
+      margin: 2rem 0;
+      padding: 1rem 1.5rem;
+      border-left: 4px solid var(--accent);
+      background: #1e293b;
+      color: #cbd5e1;
+      font-style: italic;
+    }
+
+    footer {
+      text-align: center;
+      background: #1e293b;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #94a3b8;
+      margin-top: 3rem;
+    }
+
+    .top-btn {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: var(--accent);
+      border: none;
+      border-radius: 50%;
+      padding: 0.6rem;
+      font-size: 1.2rem;
+      color: #000;
+      cursor: pointer;
+    }
+
+    @media screen and (max-width: 768px) {
+      nav {
+        display: none;
+      }
+
+      main {
+        margin-left: 0;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>ReconX Scan</h1>
+  <p>Powerful Streamlit-based Network Reconnaissance Suite</p>
+  <div class="badges">
+    <a href="https://reconx.streamlit.app/" class="badge">🌐 Live App</a>
+    <a href="https://github.com/atharvbyadav/ReconX" class="badge">🔗 GitHub Repo</a>
+    <a href="https://atharvbyadav.github.io/ReconX/" class="badge">📘 GitHub Pages</a>
+  </div>
+</header>
+
+<nav>
+  <h3>📑 Contents</h3>
+  <a href="#overview">Overview</a>
+  <a href="#features">Features</a>
+  <a href="#usage">Usage</a>
+  <a href="#theory">How It Works</a>
+  <a href="#install">Installation</a>
+  <a href="#disclaimer">Disclaimer</a>
+  <a href="#license">License</a>
+</nav>
+
+<main>
+  <section id="overview">
+    <h2>📌 Overview</h2>
+    <p><strong>ReconX</strong> is your Swiss Army Knife for network reconnaissance. Designed for <strong>ethical hackers</strong>, <strong>red teamers</strong>, and <strong>security researchers</strong>, it unifies multiple OSINT and scanning utilities into a clean, fast, and interactive Streamlit interface.</p>
+    <blockquote>"Silent, swift, and powerful — ReconX simplifies deep network analysis without making noise."</blockquote>
+  </section>
+
+  <section id="features">
+    <h2>🚀 Features</h2>
+
+    <div class="card">
+      <h3>🔍 Port Scanner</h3>
+      <p>Fast multithreaded port scan with service detection and vulnerability hints.</p>
+    </div>
+
+    <div class="card">
+      <h3>🧠 OS Fingerprinting</h3>
+      <p>Estimate the target system's OS based on TCP/IP response signatures.</p>
+    </div>
+
+    <div class="card">
+      <h3>🌐 Whois Lookup</h3>
+      <p>Get detailed ownership data of domains/IPs using public WHOIS services.</p>
+    </div>
+
+    <div class="card">
+      <h3>🔄 Reverse DNS</h3>
+      <p>Reveal domains associated with given IPs for better context and analysis.</p>
+    </div>
+
+    <div class="card">
+      <h3>📡 DNS Enumeration</h3>
+      <p>Uncover DNS records including A, MX, NS, CNAME, TXT to map domain structure.</p>
+    </div>
+  </section>
+
+  <section id="usage">
+    <h2>📖 Usage Guide</h2>
+    <ul>
+      <li>✅ Enter target IP or domain for each module</li>
+      <li>⚙️ Click the respective action button (Scan, Lookup, etc.)</li>
+      <li>📊 View rich results directly in your browser</li>
+    </ul>
+  </section>
+
+  <section id="theory">
+    <h2>🧬 How It Works</h2>
+    <p>Each module uses Python-native or public libraries/APIs to perform passive or active recon. OS fingerprinting works via TCP handshake responses, WHOIS through RDAP, and DNS queries use `dnspython`.</p>
+  </section>
+
+  <section id="install">
+    <h2>⚙️ Installation</h2>
+    <pre>git clone https://github.com/atharvbyadav/ReconX.git
+cd ReconX
+pip install -r requirements.txt
+streamlit run ReconX.py</pre>
+    <p>🔓 ReconX will open in your browser automatically.</p>
+  </section>
+
+  <section id="disclaimer">
+    <h2>⚠️ Disclaimer</h2>
+    <p>This project is intended strictly for <strong>ethical research and testing</strong> on systems you <strong>own or have permission to audit</strong>. Misuse is illegal and violates cyber laws.</p>
+  </section>
+
+  <section id="license">
+    <h2>📜 License</h2>
+    <p>ReconX is licensed under the <strong>BSD 3-Clause License</strong>.</p>
+  </section>
+</main>
+
+<button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="top-btn" title="Back to Top">↑</button>
+
+<footer>
+  <p>🔐 Built by <strong>Atharv Yadav</strong> | Powered by <a href="https://streamlit.io/" target="_blank">Streamlit</a></p>
+</footer>
+
+</body>
+</html>
