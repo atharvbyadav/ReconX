@@ -4,275 +4,292 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ReconX — Network Security Toolkit</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
+
+  <!-- AOS for scroll animation -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet"/>
+
   <style>
     :root {
-      --primary: #0d1117;
+      --bg: #0d1117;
+      --panel: #161b22;
       --accent: #58a6ff;
       --text: #c9d1d9;
-      --bg: #161b22;
-      --card-bg: #1f2937;
+      --muted: #8b949e;
+      --card: #1f2937;
       --border: #30363d;
-      --soft-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      --shadow: rgba(0, 0, 0, 0.5);
     }
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--primary);
-      color: var(--text);
-      padding-left: 60px;
-      line-height: 1.7;
-    }
-    a { color: var(--accent); text-decoration: none; }
-
-    .sidebar {
-      position: fixed;
-      left: 0; top: 0;
-      width: 60px; height: 100vh;
       background: var(--bg);
+      color: var(--text);
+    }
+    a { color: var(--accent); text-decoration: none; transition: 0.2s; }
+    a:hover { text-decoration: underline; }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed; top: 0; left: 0;
+      width: 60px; height: 100vh;
+      background: var(--panel);
+      transition: width 0.3s ease;
+      overflow: hidden;
+      box-shadow: 2px 0 8px var(--shadow);
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px 0;
-      gap: 24px;
-      box-shadow: var(--soft-shadow);
+      padding-top: 1em;
     }
-    .sidebar i {
+    .sidebar:hover { width: 200px; }
+    .sidebar .icon {
       font-size: 1.4rem;
       color: var(--accent);
-      transition: 0.3s;
-      cursor: pointer;
+      margin: 1.5rem 0;
+      position: relative;
     }
-    .sidebar i:hover {
-      transform: scale(1.2); color: #fff;
+    .sidebar .label {
+      opacity: 0;
+      white-space: nowrap;
+      margin-left: 0.5rem;
+      color: var(--text);
+      transition: opacity 0.3s ease;
     }
+    .sidebar:hover .label { opacity: 1; }
 
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
+    /* Main content */
+    .main {
+      margin-left: 60px;
       padding: 2rem;
+      transition: margin-left 0.3s ease;
     }
+    .sidebar:hover ~ .main { margin-left: 200px; }
+    section { margin-bottom: 4rem; }
 
+    /* Hero */
     .hero {
       text-align: center;
-      margin-bottom: 3rem;
+      padding: 4rem 1rem;
+      background: linear-gradient(135deg, var(--accent), #0062cc);
+      border-radius: 12px;
+      box-shadow: 0 12px 20px var(--shadow);
+      margin-bottom: 4rem;
     }
     .hero h1 {
-      font-size: 2.8rem;
-      font-weight: 800;
-      color: var(--accent);
+      font-size: 3rem; color: #fff; font-weight: 800; margin-bottom: 0.5rem;
     }
     .hero p {
-      font-size: 1.1rem;
-      margin-top: 1rem;
-      color: #9ca3af;
+      font-size: 1.2rem; color: #e1e4e8;
     }
-
-    .btn-group {
-      margin-top: 2rem;
+    .hero .btn-group {
+      margin: 2rem 0;
     }
     .btn {
       display: inline-block;
-      background: var(--accent);
-      color: #fff;
-      padding: 0.6rem 1.2rem;
+      background: #fff;
+      color: var(--accent);
+      padding: 0.7rem 1.4rem;
+      margin: 0 0.5rem;
+      font-weight: 600;
       border-radius: 8px;
-      text-decoration: none;
-      margin: 0 10px;
-      font-weight: 600;
-      transition: 0.3s;
+      transition: transform 0.2s;
     }
-    .btn:hover {
-      background: #1f6feb;
-    }
+    .btn:hover { transform: scale(1.05); }
 
-    .section-title {
-      font-size: 2rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      border-bottom: 2px solid var(--accent);
-      display: inline-block;
-    }
-
+    /* Badges */
     .badges {
       margin-top: 1rem;
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
+      display: flex; justify-content: center;
+      gap: 0.6rem;
     }
-    .badges img {
-      height: 28px;
-    }
+    .badges img { height: 28px; }
 
-    .feature-grid {
+    /* Features */
+    .features {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
       gap: 1.5rem;
     }
-    .feature-card {
-      background: var(--card-bg);
+    .feature {
+      background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.2rem;
-      box-shadow: var(--soft-shadow);
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 16px var(--shadow);
       transition: transform 0.3s;
     }
-    .feature-card:hover {
-      transform: translateY(-6px);
-    }
-    .feature-card i {
-      font-size: 1.5rem;
+    .feature:hover { transform: translateY(-5px); }
+    .feature i {
+      font-size: 2rem;
       color: var(--accent);
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.5rem;
     }
-    .feature-card h3 {
-      margin-top: 0.2rem;
-      font-size: 1.1rem;
+    .feature h3 {
+      margin: 0.5rem 0; font-size: 1.25rem;
     }
 
-    .install-box {
-      background: #0c151f;
-      border-left: 5px solid var(--accent);
-      padding: 1rem 1.5rem;
+    /* Deploy box */
+    .deploy-box {
+      background: var(--panel);
+      border-left: 4px solid var(--accent);
+      padding: 1rem;
       font-family: monospace;
-      border-radius: 8px;
-      margin: 1rem 0;
-      white-space: pre-line;
+      border-radius: 6px;
+      box-shadow: 0 4px 10px var(--shadow);
+      overflow-x: auto;
     }
 
-    .screenshot {
+    /* Screenshots */
+    .screenshots img {
       width: 100%;
+      max-width: 45%;
+      margin: 1rem;
       border-radius: 8px;
-      margin-top: 1rem;
-      box-shadow: var(--soft-shadow);
+      box-shadow: 0 8px 16px var(--shadow);
+      transition: transform 0.2s;
     }
+    .screenshots img:hover { transform: scale(1.02); }
 
+    /* Footer */
     footer {
       text-align: center;
-      font-size: 0.9rem;
-      color: #6b7280;
-      margin-top: 4rem;
-      padding: 2rem 0;
+      padding: 2rem 1rem;
+      color: var(--muted);
       border-top: 1px solid var(--border);
+      font-size: 0.9rem;
     }
+    footer a { color: var(--accent); }
+    footer .social i {
+      margin: 0 0.6rem;
+      transition: transform 0.2s;
+    }
+    footer .social i:hover { transform: scale(1.2); }
 
-    footer a {
-      color: var(--accent);
-    }
-
-    @media(max-width: 768px) {
-      body { padding-left: 0; }
-      .sidebar { display: none; }
-      .feature-grid {
-        grid-template-columns: 1fr;
-      }
-    }
+    /* Anchor scroll offset */
+    [id] { scroll-margin-top: 80px; }
   </style>
 </head>
 <body>
 
+  <!-- Sidebar -->
   <div class="sidebar">
-    <a href="#overview"><i class="fas fa-home"></i></a>
-    <a href="#features"><i class="fas fa-shield-alt"></i></a>
-    <a href="#screenshots"><i class="fas fa-camera-retro"></i></a>
-    <a href="#install"><i class="fas fa-code"></i></a>
-    <a href="#license"><i class="fas fa-file-contract"></i></a>
+    <a href="#overview"><div><i class="fas fa-home icon"></i><span class="label">Overview</span></div></a>
+    <a href="#features"><div><i class="fas fa-cogs icon"></i><span class="label">Features</span></div></a>
+    <a href="#screenshots"><div><i class="fas fa-camera icon"></i><span class="label">Screenshots</span></div></a>
+    <a href="#deploy"><div><i class="fas fa-rocket icon"></i><span class="label">Deploy</span></div></a>
+    <a href="#license"><div><i class="fas fa-file-contract icon"></i><span class="label">License</span></div></a>
   </div>
 
-  <div class="container">
-    <header class="hero">
-      <h1>ReconX — Network Security Toolkit</h1>
-      <p>A powerful, user-friendly recon suite for ethical hackers and red teamers.</p>
+  <div class="main">
+    <!-- Hero -->
+    <section class="hero" data-aos="fade-down">
+      <h1>ReconX Scan</h1>
+      <p>Your streamlined, secure network recon suite powered by Streamlit.</p>
       <div class="btn-group">
-        <a href="https://reconx.streamlit.app/" target="_blank" class="btn">🔗 Live App</a>
-        <a href="https://github.com/atharvbyadav/ReconX" target="_blank" class="btn">📁 GitHub Repo</a>
+        <a href="https://reconx.streamlit.app/" target="_blank" class="btn"><i class="fas fa-eye"></i> Live App</a>
+        <a href="https://github.com/atharvbyadav/ReconX" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub Repo</a>
       </div>
       <div class="badges">
-        <img src="https://img.shields.io/badge/License-BSD%203--Clause-blue.svg" alt="BSD License" />
-        <img src="https://img.shields.io/badge/Platform-Streamlit-lightgrey" alt="Platform" />
-        <img src="https://img.shields.io/badge/Python-3.8+-blue" alt="Python 3.8+" />
+        <img src="https://img.shields.io/badge/License-BSD%203--Clause-blue.svg" alt="License"/>
+        <img src="https://img.shields.io/badge/Platform-Streamlit-lightgrey.svg" alt="Platform"/>
+        <img src="https://img.shields.io/badge/Python-3.8%2B-blue.svg" alt="Python"/>
       </div>
-    </header>
+    </section>
 
-    <section id="overview">
-      <h2 class="section-title">🔍 Overview</h2>
+    <!-- Overview -->
+    <section id="overview" data-aos="fade-up">
+      <h2 class="section-title">Overview</h2>
       <p>
-        <strong>ReconX</strong> is a Streamlit-powered reconnaissance suite tailored for penetration testers and cybersecurity researchers. It enables you to perform critical network tests like port scanning, OS fingerprinting, WHOIS lookups, and DNS reconnaissance in an intuitive interface.
-        <br><br>
-        Whether you’re performing pre-engagement recon, gathering target intelligence, or analyzing DNS records for exposure — ReconX helps you do it securely and effectively.
+        ReconX is designed to be both powerful and simple. With one click, perform port scans, OS detection, WHOIS lookups, reverse DNS and DNS enumeration — all within a clean, interactive Streamlit UI.
+      </p>
+      <p>
+        Whether you're a red-teamer mapping infrastructure or a security researcher gathering intelligence, ReconX helps you get actionable data fast and responsibly.
       </p>
     </section>
 
-    <section id="features">
-      <h2 class="section-title">🚀 Features</h2>
-      <div class="feature-grid">
-
-        <div class="feature-card">
+    <!-- Features -->
+    <section id="features" data-aos="fade-up">
+      <h2 class="section-title">Features</h2>
+      <div class="features">
+        <div class="feature">
           <i class="fas fa-network-wired"></i>
           <h3>Port Scanning</h3>
-          <p>Multi-threaded scanning of IPs to identify open ports, banners, and outdated services.</p>
+          <p>Multi-threaded scanning (50 threads) to detect open ports, banners, and outdated services quickly.</p>
         </div>
-
-        <div class="feature-card">
+        <div class="feature">
           <i class="fas fa-microchip"></i>
           <h3>OS Fingerprinting</h3>
-          <p>Uses TCP response patterns to infer Linux/Unix or Windows server environments.</p>
+          <p>Infers if the target is Linux/Unix or Windows using TCP handshake analysis.</p>
         </div>
-
-        <div class="feature-card">
+        <div class="feature">
           <i class="fas fa-globe"></i>
           <h3>WHOIS Lookup</h3>
-          <p>Extract domain ownership and registry information for a domain or IP.</p>
+          <p>Pull registrar, owner, and domain date info directly from public WHOIS servers.</p>
         </div>
-
-        <div class="feature-card">
+        <div class="feature">
           <i class="fas fa-reply"></i>
-          <h3>Reverse DNS Lookup</h3>
-          <p>Translate IP addresses into associated domain names using passive DNS queries.</p>
+          <h3>Reverse DNS</h3>
+          <p>Translate IP to domain names to uncover hidden infrastructure associations.</p>
         </div>
-
-        <div class="feature-card">
+        <div class="feature">
           <i class="fas fa-server"></i>
           <h3>DNS Enumeration</h3>
-          <p>Enumerate records like A, MX, NS, CNAME, TXT to analyze domain infrastructure.</p>
+          <p>Fetch A, AAAA, MX, NS, TXT, CNAME records to build a robust domain profile.</p>
         </div>
-
       </div>
     </section>
 
-    <section id="screenshots">
-      <h2 class="section-title">📸 Live Screenshots</h2>
-      <img src="screenshot1.png" alt="Screenshot 1" class="screenshot" />
-      <img src="screenshot2.png" alt="Screenshot 2" class="screenshot" />
+    <!-- Screenshots -->
+    <section id="screenshots" data-aos="fade-up">
+      <h2 class="section-title">Screenshots</h2>
+      <div class="screenshots">
+        <img src="screenshot1.png" alt="ReconX App Screenshot 1"/>
+        <img src="screenshot2.png" alt="ReconX App Screenshot 2"/>
+      </div>
     </section>
 
-    <section id="install">
-      <h2 class="section-title">🛠️ Deployment</h2>
-      <p>Clone the repo, install dependencies, and run Streamlit:</p>
-      <div class="install-box">
+    <!-- Deployment -->
+    <section id="deploy" data-aos="fade-up">
+      <h2 class="section-title">Deployment</h2>
+      <p>Clone, install, and run in seconds:</p>
+      <div class="deploy-box">
 git clone https://github.com/atharvbyadav/ReconX.git
 cd ReconX
 pip install -r requirements.txt
 streamlit run ReconX.py
       </div>
-    </section>
-
-    <section id="license">
-      <h2 class="section-title">📜 License</h2>
       <p>
-        This project is licensed under the <strong>BSD 3-Clause License</strong>.
-        Use this tool ethically and only for authorized security assessments.
+        Hosted via GitHub Pages:
+        <a href="https://atharvbyadav.github.io/ReconX/" target="_blank">https://atharvbyadav.github.io/ReconX/</a>
       </p>
     </section>
 
-    <footer>
-      Made with ❤️ by <a href="https://github.com/atharvbyadav" target="_blank">Atharv Yadav</a> —
-      <a href="https://github.com/atharvbyadav/ReconX" target="_blank">View on GitHub</a>
+    <!-- License -->
+    <section id="license" data-aos="fade-up">
+      <h2 class="section-title">License</h2>
+      <p>ReconX is open source under the <strong>BSD 3-Clause License</strong>. Use it responsibly and ethically.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer data-aos="fade-up">
+      <p>Created with ❤️ by <a href="https://github.com/atharvbyadav" target="_blank">Atharv Yadav</a></p>
+      <div class="social">
+        <a href="https://github.com/atharvbyadav/ReconX" target="_blank"><i class="fab fa-github fa-2x"></i></a>
+        <a href="https://reconx.streamlit.app/" target="_blank"><i class="fas fa-external-link-alt fa-2x"></i></a>
+      </div>
     </footer>
   </div>
 
+  <!-- AOS Script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({ duration: 700, once: true });
+  </script>
 </body>
 </html>
