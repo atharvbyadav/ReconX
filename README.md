@@ -16,7 +16,6 @@
 ---
 
 <div style="display: inline-block; width: 58%; vertical-align: top;">
-
   <h2>📌 Overview</h2>
   <p><strong>ReconX</strong> is your <strong>all-in-one network reconnaissance and analysis toolkit</strong>, designed for <strong>penetration testers, ethical hackers, red teamers</strong>, and <strong>cybersecurity enthusiasts</strong>.</p>
   <p>
@@ -27,9 +26,7 @@
   </p>
   🔗 <strong>Live Demo:</strong> <a href="https://reconx.streamlit.app/">ReconX Web App</a><br>
   📂 <strong>Repository:</strong> <a href="https://github.com/atharvbyadav/ReconX">ReconX GitHub</a>
-
 </div>
-
 <div style="display: inline-block; width: 40%; text-align: center; vertical-align: top;">
   <img src="https://github.com/atharvbyadav/ReconX/blob/main/assets/ReconX.png" alt="ReconX Banner" style="max-width: 100%; height: auto; border-radius: 10px;" />
 </div>
