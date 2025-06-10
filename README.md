@@ -1,29 +1,35 @@
-# ReconX Scan - Network Security Toolkit 🔍
+# 🛡️ ReconX Scan — Network Security Toolkit
 
-## Table of Contents 📑
-1. [Overview](#overview-)
-2. [Author](#author-)
-3. [Features](#features-)
-4. [Theory Behind The Features](#theory-behind-the-features-)
-5. [Installation & Usage](#installation--usage-)
-6. [Usage Guide](#usage-guide-)
-7. [Disclaimer](#disclaimer-)
-8. [Contributing](#contributing-)
-9. [License](#license-)
+![Python](https://img.shields.io/badge/Python-3.x-blue.svg)
+![Streamlit](https://img.shields.io/badge/Built%20With-Streamlit-orange.svg)
+![License](https://img.shields.io/badge/License-BSD%203--Clause-green.svg)
+![Platform](https://img.shields.io/badge/Platform-Cross--Platform-lightgrey.svg)
+![Status](https://img.shields.io/badge/Status-Active-success.svg)
 
 ---
 
-## Overview 📌
-**ReconX Scan** is an advanced **network security toolkit** built with **Streamlit** that provides a user-friendly interface for cybersecurity tasks. This tool helps security analysts, penetration testers, and IT professionals perform essential network reconnaissance and security assessments.
+## 📌 Overview
 
-🚀 **Live Demo**: [ReconX](https://reconx.streamlit.app/)
+**ReconX Scan** is your **all-in-one network reconnaissance and analysis toolkit**, designed for **penetration testers, ethical hackers, red teamers**, and **cybersecurity enthusiasts**.
 
-## Author ✍️
-Created by **Atharv Yadav** - [GitHub Profile](https://github.com/atharvbyadav)
+Built with **Streamlit**, ReconX offers a modern web-based interface for carrying out essential reconnaissance tasks that are typically scattered across multiple tools. From scanning ports and fingerprinting operating systems to performing detailed DNS enumeration and WHOIS lookups, this tool empowers users to perform passive and active recon with minimal setup and no steep learning curve.
 
-🔗GitHub Repository: [ReconX](https://github.com/atharvbyadav/ReconX)
+> Whether you're auditing your infrastructure, preparing for a Capture The Flag (CTF), or conducting open-source intelligence gathering (OSINT), **ReconX** simplifies your recon workflow — responsibly and effectively.
 
-## Features 🚀
+🔗 **Live Demo**: [ReconX Web App](https://reconx.streamlit.app/)
+
+📂 **Repository**: [ReconX GitHub](https://github.com/atharvbyadav/ReconX)
+
+---
+
+## ✍️ Author
+
+Created by **Atharv Yadav** — [GitHub Profile](https://github.com/atharvbyadav)
+
+---
+
+## 🚀 Features
+
 ### 1️⃣ **Port Scanning**
 - Scans a given target IP within the range **1-500**.
 - Uses **multi-threading (50 threads)** to speed up scanning.
@@ -47,7 +53,9 @@ Created by **Atharv Yadav** - [GitHub Profile](https://github.com/atharvbyadav)
 - Helps in subdomain enumeration and understanding domain infrastructure.
 
 ---
-## Theory Behind The Features 🧠
+
+## 🧠 Theory Behind The Features
+
 ### 🔹 Port Scanning
 Port scanning is an **active reconnaissance technique** used to identify open ports on a target machine. Open ports can indicate running services, which may be exploitable.
 
@@ -64,7 +72,8 @@ Maps an IP address back to a domain name. If a reverse DNS record exists, it pro
 DNS records contain valuable information about a domain’s infrastructure, such as mail servers (MX), authoritative name servers (NS), and textual metadata (TXT).
 
 ---
-## Installation & Usage 🛠️
+
+## 🛠️ Installation & Usage
 
 ### Prerequisites
 Ensure you have **Python 3.x** installed on your system.
@@ -73,60 +82,114 @@ Ensure you have **Python 3.x** installed on your system.
 ```sh
 git clone https://github.com/atharvbyadav/ReconX.git
 cd ReconX
-```
 
-### Step 2️⃣ - Install Dependencies
-```sh
+Step 2️⃣ - Install Dependencies
+
 pip install -r requirements.txt
-```
 
-### Step 3️⃣ - Run the Application
-```sh
+Step 3️⃣ - Run the Application
+
 streamlit run ReconX.py
-```
 
 The application will open in your default web browser.
 
----
-## Usage Guide 📖
 
-### 🔸 **Port Scanning**
-1. Enter the **Target IP Address**.
-2. Click **Start Port Scan**.
+---
+
+📖 Usage Guide
+
+🔸 Port Scanning
+
+1. Enter the Target IP Address.
+
+
+2. Click Start Port Scan.
+
+
 3. View the open ports, banners, outdated services, and potential risks.
 
-### 🔸 **OS Fingerprinting**
-1. Enter the **Target IP Address**.
-2. Click **Detect OS**.
+
+
+🔸 OS Fingerprinting
+
+1. Enter the Target IP Address.
+
+
+2. Click Detect OS.
+
+
 3. View the estimated OS of the target.
 
-### 🔸 **Whois Lookup**
-1. Enter the **Domain or IP Address**.
-2. Click **Get WHOIS Info**.
+
+
+🔸 Whois Lookup
+
+1. Enter the Domain or IP Address.
+
+
+2. Click Get WHOIS Info.
+
+
 3. View the WHOIS data fetched from public databases.
 
-### 🔸 **Reverse DNS Lookup**
-1. Enter the **Target IP Address**.
-2. Click **Perform Reverse DNS Lookup**.
+
+
+🔸 Reverse DNS Lookup
+
+1. Enter the Target IP Address.
+
+
+2. Click Perform Reverse DNS Lookup.
+
+
 3. View the associated domain (if any).
 
-### 🔸 **DNS Enumeration**
-1. Enter the **Domain Name**.
-2. Click **Enumerate DNS**.
+
+
+🔸 DNS Enumeration
+
+1. Enter the Domain Name.
+
+
+2. Click Enumerate DNS.
+
+
 3. View all DNS records found.
 
----
-## Disclaimer ⚠️
-This tool is meant for **educational and security research purposes only**. Unauthorized scanning of networks you do not own or have explicit permission to test **is illegal** and punishable under cyber laws.
 
-Use this tool **responsibly and ethically**!
+
 
 ---
-## Contributing 🤝
-We welcome contributions! Feel free to **fork this repository**, improve the tool, and submit a **pull request**.
-Reach out for Ideas and Suggetions...
+
+⚠️ Disclaimer
+
+This tool is meant for educational and security research purposes only. Unauthorized scanning of networks you do not own or have explicit permission to test is illegal and punishable under cyber laws.
+
+Use this tool responsibly and ethically!
+
 
 ---
-## License 📜
-This project is licensed under the **BSD 3-Clause License**.
 
+🤝 Contributing
+
+We welcome contributions! Feel free to fork this repository, improve the tool, and submit a pull request.
+
+Reach out for ideas and suggestions...
+
+
+---
+
+📜 License
+
+This project is licensed under the BSD 3-Clause License.
+
+
+---
+
+📬 Contact Me
+
+If you have any questions, feedback, or collaboration ideas, feel free to reach out:
+
+🔗 GitHub: @atharvbyadav
+
+🌐 Portfolio: atharvbyadav.github.io
