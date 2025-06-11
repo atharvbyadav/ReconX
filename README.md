@@ -19,13 +19,8 @@
   <tr>
     <td style="width: 60%; vertical-align: top; padding-right: 20px;">
       <h2>📌 Overview</h2>
-      <p><strong>ReconX</strong> is your <strong>all-in-one network reconnaissance and analysis toolkit</strong>, designed for <strong>penetration testers, ethical hackers, red teamers</strong>, and <strong>cybersecurity enthusiasts</strong>.</p>
-      <p>
-        Built with <strong>Streamlit</strong>, ReconX offers a modern web-based interface for carrying out essential reconnaissance tasks that are typically scattered across multiple tools. From scanning ports and fingerprinting operating systems to performing detailed DNS enumeration and WHOIS lookups, this tool empowers users to perform passive and active recon with minimal setup and no steep learning curve.
-      </p>
-      <p>
-        Whether you're auditing your infrastructure, preparing for a Capture The Flag (CTF), or conducting OSINT, <strong>ReconX</strong> simplifies your recon workflow — responsibly and effectively.
-      </p>
+      <p><strong>ReconX</strong> is a powerful, all-in-one <strong>network security reconnaissance toolkit</strong> built with a modern <strong>Streamlit web interface</strong>. Designed for <strong>penetration testers, ethical hackers, red teamers</strong>, and <strong>cybersecurity enthusiasts</strong>, ReconX brings together essential active and passive recon techniques in one lightweight, interactive dashboard.</p>
+      <p>Whether you’re prepping for a CTF, conducting OSINT, scanning your own infrastructure, or just learning the ropes, <strong>ReconX empowers you to explore and assess digital footprints — securely, silently, and effectively</strong>.</p>
       🔗 <strong>Live Demo:</strong> <a href="https://reconx.streamlit.app/">ReconX Web App</a><br>
       📂 <strong>Repository:</strong> <a href="https://github.com/atharvbyadav/ReconX">ReconX GitHub</a>
     </td>
