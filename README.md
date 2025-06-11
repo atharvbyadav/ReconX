@@ -22,14 +22,15 @@
     <td style="width: 60%; vertical-align: top; padding-right: 20px;">
       <p><strong>ReconX</strong> is a powerful, all-in-one <strong>network security reconnaissance toolkit</strong> built with a modern <strong>Streamlit web interface</strong>. Designed for <strong>penetration testers, ethical hackers, red teamers</strong>, and <strong>cybersecurity enthusiasts</strong>, ReconX brings together essential active and passive recon techniques in one lightweight, interactive dashboard.</p>
       <p>Whether you’re prepping for a CTF, conducting OSINT, scanning your own infrastructure, or just learning the ropes, <strong>ReconX empowers you to explore and assess digital footprints — securely, silently, and effectively</strong>.</p>
-      🔗 <strong>Live Demo:</strong> <a href="https://reconx.streamlit.app/">ReconX Web App</a><br>
-      📂 <strong>Repository:</strong> <a href="https://github.com/atharvbyadav/ReconX">ReconX GitHub</a>
     </td>
     <td style="width: 40%; text-align: center; vertical-align: top;">
       <img src="https://github.com/atharvbyadav/ReconX/blob/main/assets/ReconX.png" alt="ReconX Banner" style="width: 100%; max-width: 420px; height: auto; border-radius: 10px;" />
     </td>
   </tr>
 </table>
+
+🔗 **Live Demo**: [ReconX Web App](https://reconx.streamlit.app/)  
+📂 **Source Code**: [ReconX GitHub](https://github.com/atharvbyadav/ReconX)
 
 ---
 
