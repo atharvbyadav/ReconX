@@ -302,7 +302,7 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
             flex: 1 1 calc(50% - 20px);
             min-width: 280px;
-            border-box: box-sizing;
+            box-sizing: border-box;
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
             border: 1px solid transparent;
             position: relative;
@@ -382,7 +382,7 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
             flex: 1 1 calc(33% - 20px);
             min-width: 250px;
-            border-box: box-sizing;
+            box-sizing: border-box;
             text-align: center;
             transition: transform 0.3s ease, background-color 0.3s ease;
             border: 1px solid #3a3a5a;
@@ -795,26 +795,29 @@
         @media (max-width: 768px) {
             body {
                 flex-direction: column;
+                padding-bottom: 70px; /* Space for the fixed bottom navbar */
             }
             .navbar {
-                position: relative;
+                position: fixed; /* Stick to the bottom */
                 left: 0;
-                top: 0;
-                height: 60px;
+                bottom: 0; /* Align to the bottom */
+                top: auto; /* Remove top constraint */
+                height: 70px; /* Slightly taller for better tap targets */
                 width: 100%;
                 padding: 10px 0;
-                border-radius: 0;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+                border-radius: 0; /* No border-radius for full width at bottom */
+                box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.6); /* Shadow at the top */
                 flex-direction: row;
                 justify-content: flex-start;
                 overflow-x: auto;
                 overflow-y: hidden;
                 -webkit-overflow-scrolling: touch;
                 align-items: center;
+                z-index: 1000;
             }
             .navbar:hover {
                 width: 100%;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+                box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.6);
             }
             .navbar ul {
                 display: flex;
@@ -858,6 +861,7 @@
                 margin-right: 0;
                 padding: 15px;
                 padding-top: 15px;
+                padding-bottom: 0; /* Remove bottom padding as body now handles it */
                 width: 100%;
                 box-sizing: border-box;
             }
