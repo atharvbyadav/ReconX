@@ -6,6 +6,10 @@
     <title>ReconX - Network Reconnaissance Toolkit</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
@@ -298,7 +302,7 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
             flex: 1 1 calc(50% - 20px);
             min-width: 280px;
-            box-sizing: border-box;
+            border-box: box-sizing;
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
             border: 1px solid transparent;
             position: relative;
@@ -378,7 +382,7 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
             flex: 1 1 calc(33% - 20px);
             min-width: 250px;
-            box-sizing: border-box;
+            border-box: box-sizing;
             text-align: center;
             transition: transform 0.3s ease, background-color 0.3s ease;
             border: 1px solid #3a3a5a;
@@ -483,7 +487,6 @@
             margin-right: 8px;
             font-size: 1em;
         }
-
 
         .separator-text {
             text-align: center;
@@ -797,18 +800,17 @@
                 position: relative;
                 left: 0;
                 top: 0;
-                bottom: auto;
                 height: 60px;
                 width: 100%;
                 padding: 10px 0;
                 border-radius: 0;
                 box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
-                display: flex;
-                justify-content: center;
-                align-items: center;
                 flex-direction: row;
+                justify-content: flex-start;
                 overflow-x: auto;
                 overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+                align-items: center;
             }
             .navbar:hover {
                 width: 100%;
@@ -817,29 +819,36 @@
             .navbar ul {
                 display: flex;
                 flex-wrap: nowrap;
-                justify-content: center;
+                justify-content: flex-start;
                 gap: 15px;
                 padding-top: 0;
+                padding-left: 15px;
+                padding-right: 15px;
             }
             .navbar ul li {
                 margin-bottom: 0;
+                flex-shrink: 0;
             }
             .navbar ul li a {
                 padding: 5px 10px;
                 flex-direction: column;
                 font-size: 0.8em;
+                text-align: center;
+                min-width: 60px;
             }
             .navbar ul li a .nav-icon {
                 margin-right: 0;
                 margin-bottom: 5px;
                 width: auto;
+                font-size: 1.5em;
             }
             .navbar ul li a .nav-text {
                 opacity: 1;
                 visibility: visible;
                 max-width: none;
                 margin-left: 0;
-                font-size: 0.8em;
+                font-size: 0.7em;
+                white-space: normal;
             }
             .navbar ul li .nested-links {
                 display: none;
@@ -848,14 +857,24 @@
                 margin-left: 0;
                 margin-right: 0;
                 padding: 15px;
-                padding-top: 0;
+                padding-top: 15px;
                 width: 100%;
+                box-sizing: border-box;
             }
             .container {
-                padding: 20px;
+                padding: 20px 15px;
             }
             h1 {
-                font-size: 2.2em;
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            p, ul li {
+                font-size: 0.95em;
             }
             .overview-section-content {
                 flex-direction: column;
@@ -867,18 +886,15 @@
                 min-width: unset;
             }
             .overview-image {
-                width: 150px;
+                width: 100%;
+                max-width: 150px;
             }
-            .features-grid {
+            .features-grid, .architecture-grid {
                 flex-direction: column;
             }
-            .feature-card {
+            .feature-card, .architecture-card {
                 width: 100%;
                 flex: none;
-                min-width: unset;
-            }
-            .architecture-grid .architecture-card {
-                flex: 1 1 100%;
                 min-width: unset;
             }
             .usage-guide-item {
@@ -906,7 +922,7 @@
                 margin-bottom: 30px;
             }
             .get-involved-section h2 {
-                font-size: 2em;
+                font-size: 1.8em;
                 margin-bottom: 20px;
             }
             .main-action-buttons {
@@ -914,6 +930,17 @@
                 align-items: center;
                 gap: 15px;
                 margin: 20px auto;
+            }
+            .social-links-grid {
+                gap: 10px;
+            }
+            .social-link-item {
+                font-size: 0.9em;
+                padding: 8px 15px;
+            }
+            .social-link-item .fas, .social-link-item .fab {
+                font-size: 0.9em;
+                margin-right: 6px;
             }
         }
     </style>
