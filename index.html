@@ -11,41 +11,40 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #0c0c1b; /* Deep dark blue/purple */
-            color: #e0e0e0; /* Light text color */
-            display: flex; /* Use flexbox for layout */
+            background-color: #0c0c1b;
+            color: #e0e0e0;
+            display: flex;
         }
 
         .navbar {
-            position: fixed; /* Fixed position for floating effect */
-            left: 20px; /* Distance from the left edge of the viewport */
-            top: 20px; /* Distance from the top edge of the viewport */
-            /* MODIFIED: Removed 'bottom: 20px;' to allow it to float freely */
-            max-height: calc(100vh - 40px); /* MODIFIED: Set max-height to ensure space at bottom (100vh - top_offset - bottom_offset) */
-            width: 60px; /* Collapsed width: only icons */
-            background-color: #1a1a36; /* Slightly lighter dark blue/purple for navbar */
-            padding: 20px 10px; /* Padding inside the navbar */
-            border-radius: 15px; /* Rounded corners for popped-out look */
-            box-shadow: 6px 0 20px rgba(0, 0, 0, 0.6); /* Stronger, darker shadow */
-            transition: width 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions for collapse/expand */
-            overflow-x: hidden; /* Hide horizontal overflow (text) */
-            z-index: 1000; /* Ensure navbar stays on top */
-            display: flex; /* Use flexbox for internal layout */
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            max-height: calc(100vh - 40px);
+            width: 60px;
+            background-color: #1a1a36;
+            padding: 20px 10px;
+            border-radius: 15px;
+            box-shadow: 6px 0 20px rgba(0, 0, 0, 0.6);
+            transition: width 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            overflow-x: hidden;
+            z-index: 1000;
+            display: flex;
             flex-direction: column;
-            overflow-y: auto; /* Enable vertical scrolling for list if content overflows */
+            overflow-y: auto;
         }
         .navbar:hover {
-            width: 240px; /* Expanded width on hover */
-            background-color: #25254e; /* Even lighter background on hover */
-            box-shadow: 8px 0 25px rgba(0, 0, 0, 0.8); /* Even stronger shadow on hover */
+            width: 240px;
+            background-color: #25254e;
+            box-shadow: 8px 0 25px rgba(0, 0, 0, 0.8);
         }
 
         .navbar ul {
             list-style-type: none;
             padding: 0;
             margin: 0;
-            flex-grow: 1; /* Allows the list to take available space */
-            padding-top: 0px; /* Start list items from the very top of the padding */
+            flex-grow: 1;
+            padding-top: 0px;
             transition: padding-top 0.3s ease;
         }
         .navbar:hover ul {
@@ -53,50 +52,65 @@
         }
 
         .navbar ul li {
-            margin-bottom: 8px; /* Spacing between list items */
+            margin-bottom: 8px;
         }
         .navbar ul li a {
-            display: flex; /* Use flexbox to align icon and text */
-            align-items: center; /* Vertically align icon and text */
+            display: flex;
+            align-items: center;
             color: #e0e0e0;
             text-decoration: none;
-            padding: 12px 10px; /* Padding for individual links */
-            white-space: nowrap; /* Prevent text from wrapping */
-            overflow: hidden; /* Hide text when collapsed */
-            border-radius: 8px; /* Rounded corners for individual links */
+            padding: 12px 10px;
+            white-space: nowrap;
+            border-radius: 8px;
             transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
         }
         .navbar ul li a:hover {
-            background-color: rgba(0, 224, 179, 0.1); /* Subtle hover background with accent color */
-            color: #00e0b3; /* Vibrant teal/aqua on hover for links */
-            transform: translateX(5px); /* Slight push to the right on hover */
+            background-color: rgba(0, 224, 179, 0.1);
+            color: #00e0b3;
+            transform: translateX(5px);
         }
-        .navbar ul li a .nav-icon {
-            font-size: 1.2em; /* Slightly larger icon */
-            width: 30px; /* Fixed width for icons to align text */
-            text-align: center;
-            margin-right: 10px; /* Space between icon and text */
-            color: #b0b0d0; /* Muted light blue for icons */
-            transition: color 0.2s ease;
-        }
-        .navbar ul li a:hover .nav-icon {
-            color: #00e0b3; /* Match icon color to text on hover */
-        }
-        .navbar ul li a.active { /* This class would be added by JS for active section */
-            background-color: #00e0b3; /* Highlight active link with vibrant accent */
-            color: #1a1a36; /* Dark text for active link */
+        .navbar ul li a.active {
+            background-color: #00e0b3;
+            color: #1a1a36;
             font-weight: bold;
-            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3); /* Inner shadow for active state */
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3);
         }
         .navbar ul li a.active .nav-icon {
-            color: #1a1a36; /* Dark icon for active state */
+            color: #1a1a36;
         }
 
-        /* Styles for nested navbar items */
+        .navbar ul li a .nav-icon {
+            font-size: 1.2em;
+            width: 30px;
+            text-align: center;
+            color: #b0b0d0;
+            transition: color 0.2s ease;
+            flex-shrink: 0;
+        }
+        .navbar ul li a:hover .nav-icon {
+            color: #00e0b3;
+        }
+
+        .navbar ul li a .nav-text {
+            max-width: 0;
+            opacity: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            margin-left: 0;
+            transition: max-width 0.3s ease-out, opacity 0.3s ease, margin-left 0.3s ease;
+            flex-grow: 1;
+        }
+
+        .navbar:hover ul li a .nav-text {
+            max-width: 180px;
+            opacity: 1;
+            margin-left: 10px;
+        }
+
         .navbar ul li .nested-links {
             list-style-type: none;
-            padding-left: 0; /* Remove default ul padding */
-            max-height: 0; /* Hidden by default */
+            padding-left: 0;
+            max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease-out;
             padding-top: 0;
@@ -104,34 +118,32 @@
         }
 
         .navbar ul li.parent-active .nested-links {
-            max-height: 100px; /* Max height to reveal content (adjust as needed) */
+            max-height: 100px;
             padding-top: 5px;
             padding-bottom: 5px;
         }
 
         .navbar ul li .nested-links li a {
-            padding-left: 20px; /* Indent nested links */
-            font-size: 0.95em; /* Slightly smaller font for nested items */
-            color: #c0c0c0; /* Slightly muted color for nested links */
+            padding-left: 20px;
+            font-size: 0.95em;
+            color: #c0c0c0;
         }
 
         .navbar ul li .nested-links li a:hover {
-            background-color: rgba(0, 224, 179, 0.05); /* Lighter hover for nested */
+            background-color: rgba(0, 224, 179, 0.05);
             color: #00e0b3;
-            transform: translateX(3px); /* Less pronounced slide */
+            transform: translateX(3px);
         }
 
         .navbar ul li .nested-links li a .nav-icon {
-            font-size: 1em; /* Smaller icon for nested */
-            width: 25px; /* Adjust width */
-            margin-right: 5px; /* Less space */
-            color: #9090b0; /* Muted icon for nested */
+            font-size: 1em;
+            width: 25px;
+            margin-right: 5px;
+            color: #9090b0;
         }
         .navbar ul li .nested-links li a:hover .nav-icon {
             color: #00e0b3;
         }
-        /* End NEW NAVBAR NESTING STYLES */
-
 
         .content-wrapper {
             flex-grow: 1;
@@ -148,73 +160,72 @@
             width: 100%;
             max-width: 900px;
             padding: 30px;
-            padding-top: 20px; /* MODIFIED: Reduced top padding */
-            background-color: #1a1a36; /* Match navbar background */
+            padding-top: 20px;
+            background-color: #1a1a36;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             margin: 0 auto;
         }
 
         h1, h2, h3 {
-            color: #00e0b3; /* Vibrant teal/aqua for headings */
+            color: #00e0b3;
             margin-top: 1.5em;
             margin-bottom: 0.8em;
         }
         h1 {
             font-size: 2.8em;
             text-align: center;
-            margin-top: 0; /* MODIFIED: Removed top margin from h1 */
+            margin-top: 0;
             margin-bottom: 20px;
             padding-bottom: 15px;
-            border-bottom: 2px solid #3a3a5a; /* Muted border */
+            border-bottom: 2px solid #3a3a5a;
         }
 
-        /* Styles for Overview Section with Image and Text Side-by-Side */
         .overview-section-content {
             display: flex;
-            flex-wrap: wrap; /* Allows wrapping on smaller screens */
-            align-items: flex-start; /* Aligns items to the top */
-            gap: 20px; /* Space between text and image */
-            margin-bottom: 20px; /* Space below this section */
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 20px;
         }
 
         .overview-text {
-            flex: 2; /* Takes up 2 parts of the available space, e.g., ~66% */
-            min-width: 300px; /* Ensures text doesn't get too squished */
+            flex: 2;
+            min-width: 300px;
         }
 
         .overview-image-container {
-            flex: 1; /* Takes up 1 part of the available space, e.g., ~33% */
-            display: flex; /* Use flex to center image within its container */
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
-            min-width: 150px; /* Minimum width for the image container */
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 150px;
         }
 
         .overview-image {
-            max-width: 100%; /* Ensure image scales down */
-            height: auto; /* Maintain aspect ratio */
+            max-width: 100%;
+            height: auto;
             object-fit: contain;
-            filter: drop-shadow(0 0 15px rgba(0, 224, 179, 0.5)); /* Subtle glow effect */
-            border-radius: 8px; /* Slightly rounded corners for the image */
+            filter: drop-shadow(0 0 15px rgba(0, 224, 179, 0.5));
+            border-radius: 8px;
         }
 
         h2 {
             font-size: 2em;
-            border-bottom: 1px solid #3a3a5a; /* Muted border */
+            border-bottom: 1px solid #3a3a5a;
             padding-bottom: 5px;
             margin-bottom: 1em;
         }
         h3 {
             font-size: 1.5em;
-            color: #b0b0d0; /* Muted light blue for subheadings */
-            margin-top: 0.5em; /* Adjust margin for h3 inside cards */
+            color: #b0b0d0;
+            margin-top: 0.5em;
             margin-bottom: 0.5em;
         }
         .badges img {
             margin-right: 5px;
             margin-bottom: 5px;
-            filter: grayscale(20%) brightness(120%); /* Subtle filter to match theme */
+            filter: grayscale(20%) brightness(120%);
         }
         p {
             margin-bottom: 1em;
@@ -229,28 +240,28 @@
         }
 
         a {
-            color: #00e0b3; /* Vibrant teal/aqua for links */
+            color: #00e0b3;
             text-decoration: none;
         }
         a:hover {
             text-decoration: underline;
         }
         code {
-            background-color: #0d0d20; /* Darker background for inline code */
+            background-color: #0d0d20;
             padding: 2px 5px;
             border-radius: 4px;
             font-family: 'Courier New', Courier, monospace;
             color: #e0e0e0;
         }
         pre {
-            background-color: #080816; /* Almost black, slightly tinted for pre blocks */
+            background-color: #080816;
             color: #e0e0e0;
             padding: 15px;
             border-radius: 8px;
             overflow-x: auto;
             font-family: 'Courier New', Courier, monospace;
             margin-bottom: 1.5em;
-            position: relative; /* Needed for positioning the copy button */
+            position: relative;
         }
         pre code {
             background-color: transparent;
@@ -261,40 +272,37 @@
         hr {
             border: 0;
             height: 1px;
-            background-image: linear-gradient(to right, rgba(0, 224, 179, 0), rgba(0, 224, 179, 0.3), rgba(0, 224, 179, 0)); /* Gradient border with accent color */
+            background-image: linear-gradient(to right, rgba(0, 224, 179, 0), rgba(0, 224, 179, 0.3), rgba(0, 224, 179, 0));
             margin: 2em 0;
         }
         .icon {
             margin-right: 8px;
-            color: #b0b0d0; /* Muted light blue for general icons */
+            color: #b0b0d0;
         }
         .text-center {
             text-align: center;
         }
-        /* Removed .contact-info styles as it's replaced */
 
-
-        /* Styles for Feature Cards */
         .features-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px; /* Space between cards */
-            justify-content: center; /* Center cards in the grid */
+            gap: 20px;
+            justify-content: center;
             margin-top: 20px;
         }
 
         .feature-card {
-            background-color: #1a1a36; /* Darker background for cards */
+            background-color: #1a1a36;
             border-radius: 10px;
-            padding: 25px; /* Increased padding */
+            padding: 25px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-            flex: 1 1 calc(50% - 20px); /* Two cards per row, with gap */
-            min-width: 280px; /* Minimum width before wrapping */
-            box-sizing: border-box; /* Include padding in width calculation */
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Smooth transitions */
-            border: 1px solid transparent; /* Initial transparent border */
-            position: relative; /* Needed for pseudo-elements */
-            overflow: hidden; /* Hide anything overflowing, important for subtle effects */
+            flex: 1 1 calc(50% - 20px);
+            min-width: 280px;
+            box-sizing: border-box;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
         }
 
         .feature-card::before {
@@ -303,59 +311,57 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 5px; /* Thin accent bar at the top */
-            background-color: #00e0b3; /* Accent color */
+            height: 5px;
+            background-color: #00e0b3;
             border-top-left-radius: 8px;
             border-top-right-radius: 8px;
-            transform: translateY(-100%); /* Start off-screen */
-            transition: transform 0.3s ease-out; /* Smooth transition for the bar */
+            transform: translateY(-100%);
+            transition: transform 0.3s ease-out;
         }
 
         .feature-card:hover {
-            transform: translateY(-8px); /* More pronounced lift effect on hover */
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.7); /* Enhanced shadow on hover */
-            border-color: rgba(0, 224, 179, 0.5); /* Subtle border on hover */
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.7);
+            border-color: rgba(0, 224, 179, 0.5);
         }
 
         .feature-card:hover::before {
-            transform: translateY(0); /* Slide the accent bar into view */
+            transform: translateY(0);
         }
 
         .feature-card h3 {
-            color: #00e0b3; /* Feature heading color */
+            color: #00e0b3;
             margin-top: 0;
-            font-size: 1.4em; /* Slightly larger heading */
+            font-size: 1.4em;
             display: flex;
             align-items: center;
-            gap: 10px; /* Space between icon and text */
-            margin-bottom: 15px; /* More space below heading */
+            gap: 10px;
+            margin-bottom: 15px;
         }
 
         .feature-card h3 .fas {
-            font-size: 1.2em; /* Icon size relative to heading */
-            color: #b0b0d0; /* Icon color */
+            font-size: 1.2em;
+            color: #b0b0d0;
             transition: color 0.3s ease;
         }
 
         .feature-card:hover h3 .fas {
-            color: #e0e0e0; /* Change icon color on hover */
+            color: #e0e0e0;
         }
 
         .feature-card ul {
-            padding-left: 25px; /* Indent list items */
-            list-style-type: '⚡ '; /* Custom lightning bolt bullet point */
-            color: #b0b0d0; /* Default color for list text */
+            padding-left: 25px;
+            list-style-type: '⚡ ';
+            color: #b0b0d0;
         }
         .feature-card ul li {
-            margin-bottom: 8px; /* More space between list items */
-            color: #e0e0e0; /* Main list item text color */
+            margin-bottom: 8px;
+            color: #e0e0e0;
         }
         .feature-card ul li::marker {
-            color: #00e0b3; /* Color the custom bullet */
+            color: #00e0b3;
         }
-        /* End NEW STYLES FOR FEATURE CARDS */
 
-        /* Styles for Architecture Component Cards */
         .architecture-grid {
             display: flex;
             flex-wrap: wrap;
@@ -370,23 +376,23 @@
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-            flex: 1 1 calc(33% - 20px); /* Three cards per row */
+            flex: 1 1 calc(33% - 20px);
             min-width: 250px;
             box-sizing: border-box;
             text-align: center;
             transition: transform 0.3s ease, background-color 0.3s ease;
-            border: 1px solid #3a3a5a; /* Subtle border */
+            border: 1px solid #3a3a5a;
         }
 
         .architecture-card:hover {
             transform: translateY(-5px);
-            background-color: #25254e; /* Slightly lighter on hover */
+            background-color: #25254e;
             border-color: #00e0b3;
         }
 
         .architecture-card .fas {
             font-size: 2.5em;
-            color: #00e0b3; /* Accent color for icons */
+            color: #00e0b3;
             margin-bottom: 10px;
         }
 
@@ -403,92 +409,87 @@
             margin-bottom: 0;
         }
 
-        /* Common style for the two specific sub-headings */
         h3.themed-subheader {
-            color: #B19CD9; /* Light Purple */
-            text-shadow: 0 0 5px rgba(177, 156, 217, 0.3); /* Subtle purple glow */
-            font-size: 1.5em; /* Keep original h3 size */
+            color: #B19CD9;
+            text-shadow: 0 0 5px rgba(177, 156, 217, 0.3);
+            font-size: 1.5em;
             margin-top: 0.5em;
             margin-bottom: 0.5em;
         }
         h3.themed-subheader .fas {
-            color: #B19CD9; /* Match icon to heading color */
+            color: #B19CD9;
         }
 
-        /* REVISED STYLE FOR LIVE DEMO BUTTON - "Glassmorphism" effect, removed underline */
         .live-demo-button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 14px 30px; /* Slightly more padding for a bolder feel */
+            padding: 14px 30px;
             margin: 20px auto;
-            background-color: rgba(0, 224, 179, 0.15); /* Semi-transparent accent color */
-            color: #00e0b3; /* Vibrant accent color for text */
-            font-size: 1.25em; /* Slightly larger font */
+            background-color: rgba(0, 224, 179, 0.15);
+            color: #00e0b3;
+            font-size: 1.25em;
             font-weight: bold;
-            text-decoration: none; /* REMOVED UNDERLINE */
-            border-radius: 10px; /* Moderately rounded corners */
-            border: 1px solid rgba(0, 224, 179, 0.4); /* Semi-transparent accent border */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Softer, slightly diffused shadow */
-            backdrop-filter: blur(8px); /* Frosted glass effect */
-            -webkit-backdrop-filter: blur(8px); /* For Safari support */
+            text-decoration: none;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 224, 179, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
             cursor: pointer;
         }
 
         .live-demo-button:hover {
-            background-color: rgba(0, 224, 179, 0.3); /* More opaque accent on hover */
-            color: #e0e0e0; /* Light text on hover for better contrast */
-            transform: translateY(-3px); /* Gentle lift effect */
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Deeper shadow on hover */
-            border-color: rgba(0, 224, 179, 0.8); /* More prominent border on hover */
+            background-color: rgba(0, 224, 179, 0.3);
+            color: #e0e0e0;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            border-color: rgba(0, 224, 179, 0.8);
         }
 
         .live-demo-button .fas,
         .live-demo-button .fab {
-            margin-right: 12px; /* Increased margin for icon */
-            font-size: 1.1em; /* Adjust icon size with text */
-            color: #00e0b3; /* Accent color for icon by default */
+            margin-right: 12px;
+            font-size: 1.1em;
+            color: #00e0b3;
             transition: color 0.3s ease;
         }
 
         .live-demo-button:hover .fas,
         .live-demo-button:hover .fab {
-            color: #e0e0e0; /* Match icon color to text on hover */
+            color: #e0e0e0;
         }
 
-        /* NEW: Styles for the main action buttons at the top */
         .main-action-buttons {
             display: flex;
-            flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+            flex-wrap: wrap;
             justify-content: center;
-            gap: 20px; /* Space between buttons */
-            margin: 30px auto; /* Margin above and below the button group */
-            width: fit-content; /* Fit content to buttons */
-            max-width: 100%; /* Ensure it doesn't overflow */
+            gap: 20px;
+            margin: 30px auto;
+            width: fit-content;
+            max-width: 100%;
         }
 
         .main-action-buttons .live-demo-button {
-            /* MODIFIED: Reduced size for these specific buttons */
-            font-size: 1em; /* Smaller font size */
-            padding: 10px 20px; /* Smaller padding */
-            margin: 0; /* Override default margin from .live-demo-button */
-            flex-shrink: 0; /* Prevent buttons from shrinking too much */
+            font-size: 1em;
+            padding: 10px 20px;
+            margin: 0;
+            flex-shrink: 0;
         }
 
         .main-action-buttons .live-demo-button .fas,
         .main-action-buttons .live-demo-button .fab {
-            /* MODIFIED: Adjusted icon margin and size for these specific buttons */
-            margin-right: 8px; /* Slightly reduced margin for icon */
-            font-size: 1em; /* Keep icon size proportional to text */
+            margin-right: 8px;
+            font-size: 1em;
         }
 
 
         .separator-text {
             text-align: center;
-            margin: 40px 0 20px 0; /* More spacing for the separator */
+            margin: 40px 0 20px 0;
             font-style: italic;
-            color: #b0b0d0; /* Muted text */
+            color: #b0b0d0;
             font-size: 1.1em;
             position: relative;
         }
@@ -497,9 +498,9 @@
             content: '';
             position: absolute;
             top: 50%;
-            width: 30%; /* Shorter lines */
+            width: 30%;
             height: 1px;
-            background-color: #3a3a5a; /* Muted line color */
+            background-color: #3a3a5a;
         }
         .separator-text::before {
             left: 5%;
@@ -508,12 +509,11 @@
             right: 5%;
         }
 
-        /* NEW: Copy button for code blocks */
         .copy-button {
             position: absolute;
             top: 8px;
             right: 8px;
-            background-color: rgba(0, 224, 179, 0.2); /* Semi-transparent accent */
+            background-color: rgba(0, 224, 179, 0.2);
             color: #e0e0e0;
             border: 1px solid rgba(0, 224, 179, 0.4);
             border-radius: 5px;
@@ -521,7 +521,7 @@
             font-size: 0.8em;
             cursor: pointer;
             transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-            z-index: 1; /* Ensure button is above code */
+            z-index: 1;
         }
 
         .copy-button:hover {
@@ -535,71 +535,69 @@
             transform: translateY(1px);
         }
 
-        /* Styles for "Usage Guide" section enhancements */
         .usage-guide-container {
-            background-color: #121228; /* Slightly lighter than main container, darker than cards */
+            background-color: #121228;
             border-radius: 10px;
             padding: 25px;
             margin-top: 20px;
             box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.4);
-            border: 1px solid #2a2a4a; /* Subtle border */
+            border: 1px solid #2a2a4a;
         }
 
         .usage-guide-item {
-            background-color: #1a1a36; /* Matching feature card background */
+            background-color: #1a1a36;
             border-radius: 8px;
             padding: 15px 20px;
-            margin-bottom: 15px; /* Spacing between items */
+            margin-bottom: 15px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
             transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-            display: flex; /* Use flexbox for icon and text alignment */
-            align-items: flex-start; /* Align icon and text to top */
-            gap: 15px; /* Space between icon and text */
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
         }
 
         .usage-guide-item:last-child {
-            margin-bottom: 0; /* No margin after the last item */
+            margin-bottom: 0;
         }
 
         .usage-guide-item:hover {
             transform: translateY(-3px);
             box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);
-            background-color: #25254e; /* Slightly lighter on hover */
+            background-color: #25254e;
         }
 
         .usage-guide-item h3 {
-            color: #00e0b3; /* Accent color for subheadings */
+            color: #00e0b3;
             margin-top: 0;
-            margin-bottom: 5px; /* Closer to paragraph */
-            font-size: 1.3em; /* Slightly smaller than main h3, but prominent */
-            flex-shrink: 0; /* Prevent icon from shrinking */
+            margin-bottom: 5px;
+            font-size: 1.3em;
+            flex-shrink: 0;
         }
 
         .usage-guide-item h3 .fas {
-            font-size: 1.1em; /* Adjust icon size within heading */
-            color: #b0b0d0; /* Muted icon color by default */
+            font-size: 1.1em;
+            color: #b0b0d0;
             transition: color 0.2s ease;
         }
 
         .usage-guide-item:hover h3 .fas {
-            color: #e0e0e0; /* Change icon color on hover */
+            color: #e0e0e0;
         }
 
         .usage-guide-item p {
-            margin-bottom: 0; /* Remove default paragraph margin */
-            flex-grow: 1; /* Allow paragraph to take remaining space */
+            margin-bottom: 0;
+            flex-grow: 1;
         }
 
-        /* NEW: Base style for Disclaimer and License sections */
         .section-card {
-            background-color: #121228; /* Slightly lighter than main container */
+            background-color: #121228;
             border-radius: 10px;
             padding: 25px;
             margin-top: 25px;
             margin-bottom: 25px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            border: 1px solid #3a3a5a; /* Muted base border */
-            position: relative; /* For the accent bar */
+            border: 1px solid #3a3a5a;
+            position: relative;
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         }
@@ -610,11 +608,11 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 5px; /* Thin accent bar at the top */
+            height: 5px;
             border-top-left-radius: 8px;
             border-top-right-radius: 8px;
-            transform: translateY(-100%); /* Start off-screen */
-            transition: transform 0.3s ease-out; /* Smooth transition for the bar */
+            transform: translateY(-100%);
+            transition: transform 0.3s ease-out;
         }
 
         .section-card:hover {
@@ -623,76 +621,73 @@
         }
 
         .section-card:hover::before {
-            transform: translateY(0); /* Slide the accent bar into view */
+            transform: translateY(0);
         }
 
         .section-card h2 {
-            margin-top: 0; /* Adjust margin for h2 inside this container */
-            border-bottom: none; /* Remove border if already within a contained section */
+            margin-top: 0;
+            border-bottom: none;
             padding-bottom: 0;
-            color: #00e0b3; /* Keep main accent color for H2 */
+            color: #00e0b3;
             display: flex;
             align-items: center;
-            margin-bottom: 15px; /* More space below heading */
+            margin-bottom: 15px;
         }
 
         .section-card h2 .fas {
-            font-size: 1.1em; /* Adjust icon size */
-            color: #b0b0d0; /* Muted icon color */
+            font-size: 1.1em;
+            color: #b0b0d0;
             transition: color 0.2s ease;
         }
 
         .section-card:hover h2 .fas {
-            color: #e0e0e0; /* Match icon color on hover */
+            color: #e0e0e0;
         }
 
-        /* Specific styles for Disclaimer */
         .disclaimer-card {
-            border-color: rgba(255, 99, 71, 0.5); /* Tomato red border */
+            border-color: rgba(255, 99, 71, 0.5);
         }
         .disclaimer-card::before {
-            background-color: #FF6347; /* Tomato red accent bar */
+            background-color: #FF6347;
         }
         .disclaimer-card h2 {
-            color: #FF6347; /* Match heading to accent */
+            color: #FF6347;
         }
         .disclaimer-card h2 .fas {
-            color: #FF6347; /* Match icon to accent */
+            color: #FF6347;
         }
         .disclaimer-card:hover {
-            border-color: #FF6347; /* Stronger red border on hover */
+            border-color: #FF6347;
         }
 
-        /* Specific styles for License */
         .license-card {
-            border-color: rgba(100, 149, 237, 0.5); /* Cornflower blue border */
+            border-color: rgba(100, 149, 237, 0.5);
         }
         .license-card::before {
-            background-color: #6495ED; /* Cornflower blue accent bar */
+            background-color: #6495ED;
         }
         .license-card h2 {
-            color: #6495ED; /* Match heading to accent */
+            color: #6495ED;
         }
         .license-card h2 .fas {
-            color: #6495ED; /* Match icon to accent */
+            color: #6495ED;
         }
         .license-card:hover {
-            border-color: #6495ED; /* Stronger blue border on hover */
+            border-color: #6495ED;
         }
 
-        /* Styles for "Get Involved & Connect" section */
         .get-involved-section {
-            background: linear-gradient(135deg, #1f1f3a 0%, #15152b 100%); /* Subtle gradient background */
+            background: linear-gradient(135deg, #1f1f3a 0%, #15152b 100%);
             border-radius: 12px;
             padding: 30px;
-            margin-top: 40px; /* More spacing from previous section */
+            margin-top: 40px;
             margin-bottom: 40px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6); /* More pronounced shadow */
-            border: 2px solid rgba(0, 224, 179, 0.3); /* Accent border */
-            transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+            border: 2px solid rgba(0, 224, 179, 0.3);
+            transition: all 0.3s ease-in-out;
             position: relative;
             overflow: hidden;
-            z-index: 0; /* Ensure content is above pseudo-element on hover */
+            z-index: 0;
         }
 
         .get-involved-section::before {
@@ -702,30 +697,30 @@
             left: -100%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle at center, rgba(0, 224, 179, 0.1) 0%, transparent 70%); /* Subtle light glow effect */
+            background: radial-gradient(circle at center, rgba(0, 224, 179, 0.1) 0%, transparent 70%);
             opacity: 0;
             transition: opacity 0.5s ease;
-            z-index: -1; /* Ensure this is behind content */
+            z-index: -1;
         }
 
         .get-involved-section:hover::before {
-            opacity: 1; /* Show glow on hover */
+            opacity: 1;
         }
 
         .get-involved-section h2 {
-            font-size: 2.5em; /* Larger heading */
+            font-size: 2.5em;
             text-align: center;
-            color: #00e0b3; /* Vibrant accent color */
+            color: #00e0b3;
             margin-top: 0;
-            margin-bottom: 30px; /* More space below heading */
-            border-bottom: 2px solid rgba(0, 224, 179, 0.4); /* Accent border */
+            margin-bottom: 30px;
+            border-bottom: 2px solid rgba(0, 224, 179, 0.4);
             padding-bottom: 15px;
             position: relative;
             z-index: 1;
         }
 
         .get-involved-section h2 .fas {
-            color: #00e0b3; /* Match icon to heading */
+            color: #00e0b3;
             margin-right: 15px;
         }
 
@@ -736,78 +731,74 @@
             z-index: 1;
         }
 
-        /* Spacing for sections within Get Involved */
         .contributing-content {
-            margin-top: 0; /* No top margin as it follows the main H2 */
+            margin-top: 0;
             position: relative;
             z-index: 1;
         }
 
-        /* NEW: Styles for the redesigned social links grid */
         .social-links-grid {
             list-style-type: none;
             padding: 0;
-            margin: 20px 0; /* Margin above and below the grid */
+            margin: 20px 0;
             display: flex;
             flex-wrap: wrap;
-            justify-content: center; /* Center items in the grid */
-            gap: 15px; /* Spacing between links */
+            justify-content: center;
+            gap: 15px;
             position: relative;
             z-index: 1;
         }
 
         .social-links-grid li {
-            margin-bottom: 0; /* Remove default list item margin */
+            margin-bottom: 0;
         }
 
         .social-link-item {
-            display: inline-flex; /* For side-by-side icon and text */
+            display: inline-flex;
             align-items: center;
             padding: 10px 20px;
-            background-color: rgba(0, 224, 179, 0.1); /* Subtle transparent background */
-            color: #00e0b3; /* Accent color for text */
+            background-color: rgba(0, 224, 179, 0.1);
+            color: #00e0b3;
             text-decoration: none;
-            border-radius: 25px; /* Pill shape */
-            border: 1px solid rgba(0, 224, 179, 0.4); /* Border with accent color */
+            border-radius: 25px;
+            border: 1px solid rgba(0, 224, 179, 0.4);
             transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
             font-size: 1.05em;
             font-weight: 500;
         }
 
         .social-link-item:hover {
-            background-color: rgba(0, 224, 179, 0.3); /* More opaque on hover */
+            background-color: rgba(0, 224, 179, 0.3);
             border-color: rgba(0, 224, 179, 0.8);
-            transform: translateY(-2px); /* Slight lift */
-            color: #e0e0e0; /* Lighter text on hover */
-            text-decoration: none; /* Ensure no underline on hover */
+            transform: translateY(-2px);
+            color: #e0e0e0;
+            text-decoration: none;
         }
 
         .social-link-item .fas,
         .social-link-item .fab {
-            margin-right: 8px; /* Space between icon and text */
+            margin-right: 8px;
             font-size: 1.1em;
-            color: #b0b0d0; /* Muted color for icons normally */
+            color: #b0b0d0;
             transition: color 0.3s ease;
         }
 
         .social-link-item:hover .fas,
         .social-link-item:hover .fab {
-            color: #e0e0e0; /* Match text color on hover */
+            color: #e0e0e0;
         }
 
-
-        /* Media query for smaller screens */
         @media (max-width: 768px) {
             body {
-                flex-direction: column; /* Stack vertically on small screens */
+                flex-direction: column;
             }
             .navbar {
-                position: relative; /* Make it flow with content on small screens */
+                position: relative;
                 left: 0;
                 top: 0;
                 bottom: auto;
-                height: 60px; /* Horizontal bar */
+                height: 60px;
                 width: 100%;
                 padding: 10px 0;
                 border-radius: 0;
@@ -815,104 +806,100 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                flex-direction: row; /* Horizontal layout */
-                overflow-x: auto; /* Allow horizontal scrolling if many items */
+                flex-direction: row;
+                overflow-x: auto;
                 overflow-y: hidden;
             }
             .navbar:hover {
-                width: 100%; /* No width expansion on hover for horizontal bar */
+                width: 100%;
                 box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
             }
             .navbar ul {
-                display: flex; /* Display list items in a row */
-                flex-wrap: nowrap; /* Prevent wrapping in horizontal mode */
+                display: flex;
+                flex-wrap: nowrap;
                 justify-content: center;
-                gap: 15px; /* Spacing between horizontal links */
-                padding-top: 0; /* Remove top padding */
+                gap: 15px;
+                padding-top: 0;
             }
             .navbar ul li {
                 margin-bottom: 0;
             }
             .navbar ul li a {
                 padding: 5px 10px;
-                flex-direction: column; /* Stack icon and text vertically */
+                flex-direction: column;
                 font-size: 0.8em;
             }
             .navbar ul li a .nav-icon {
                 margin-right: 0;
-                margin-bottom: 5px; /* Space between icon and text */
-                width: auto; /* Auto width for icons */
+                margin-bottom: 5px;
+                width: auto;
             }
             .navbar ul li a .nav-text {
-                opacity: 1; /* Always show text on small screens in horizontal bar */
+                opacity: 1;
+                visibility: visible;
+                max-width: none;
+                margin-left: 0;
+                font-size: 0.8em;
             }
-            /* Adjustments for nested navbar items on small screens */
             .navbar ul li .nested-links {
-                display: none; /* Hide nested items entirely on small screens if horizontal */
+                display: none;
             }
             .content-wrapper {
-                margin-left: 0; /* Remove left margin on small screens */
-                margin-right: 0; /* Remove right margin on small screens */
+                margin-left: 0;
+                margin-right: 0;
                 padding: 15px;
-                padding-top: 0; /* Adjust padding if navbar is not fixed on top */
-                width: 100%; /* Use full width */
+                padding-top: 0;
+                width: 100%;
             }
             .container {
-                padding: 20px; /* Adjust container padding for small screens */
+                padding: 20px;
             }
-            /* Removed .contact-info div on small screens */
             h1 {
                 font-size: 2.2em;
             }
-            /* Adjustments for overview section on small screens */
             .overview-section-content {
-                flex-direction: column; /* Stack text and image vertically */
+                flex-direction: column;
                 align-items: center;
             }
             .overview-text, .overview-image-container {
-                flex: none; /* Remove flex sizing */
-                width: 100%; /* Take full width */
+                flex: none;
+                width: 100%;
                 min-width: unset;
             }
             .overview-image {
-                width: 150px; /* Smaller image for mobile */
+                width: 150px;
             }
-            /* Adjustments for feature cards on small screens */
             .features-grid {
-                flex-direction: column; /* Stack cards vertically on small screens */
+                flex-direction: column;
             }
             .feature-card {
-                width: 100%; /* Full width for each card */
-                flex: none; /* Remove flex sizing */
+                width: 100%;
+                flex: none;
                 min-width: unset;
             }
-            /* Architecture grid adjustments for smaller screens */
             .architecture-grid .architecture-card {
-                flex: 1 1 100%; /* Stack vertically */
+                flex: 1 1 100%;
                 min-width: unset;
             }
-            /* Usage Guide adjustments for smaller screens */
             .usage-guide-item {
-                flex-direction: column; /* Stack icon and text vertically */
+                flex-direction: column;
                 align-items: flex-start;
-                gap: 5px; /* Reduce gap */
+                gap: 5px;
             }
             .usage-guide-item h3 {
-                margin-bottom: 0; /* Remove margin below heading in stacked layout */
+                margin-bottom: 0;
             }
             .usage-guide-item h3 .fas {
-                margin-right: 5px; /* Keep a little margin for the icon if it's inline with text */
+                margin-right: 5px;
             }
-            /* Disclaimer/License adjustments for smaller screens */
             .section-card h2 {
-                flex-direction: column; /* Stack icon and text vertically */
+                flex-direction: column;
                 align-items: flex-start;
             }
             .section-card h2 .fas {
                 margin-right: 0;
                 margin-bottom: 5px;
             }
-            /* Get Involved section for small screens */
             .get-involved-section {
                 padding: 20px;
                 margin-top: 30px;
@@ -922,12 +909,11 @@
                 font-size: 2em;
                 margin-bottom: 20px;
             }
-            /* Adjust spacing for main action buttons on small screens */
             .main-action-buttons {
-                flex-direction: column; /* Stack buttons vertically */
-                align-items: center; /* Center stacked buttons */
-                gap: 15px; /* Adjust gap for stacked buttons */
-                margin: 20px auto; /* Adjust margin */
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                margin: 20px auto;
             }
         }
     </style>
@@ -1082,7 +1068,7 @@
 
             <h3 class="themed-subheader"><i class="fas fa-globe-americas icon"></i> Interactive Frontend with Streamlit</h3>
             <p>
-                The intuitive, browser-based user interface of ReconX is dynamically powered by **Streamlit**. This remarkable Python library transforms complex backend logic into interactive web elements with minimal code. For every reconnaissance class, Streamlit crafts:
+                The intuitive, browser-based user interface of ReconX is dynamically powered by <strong>Streamlit</strong>. This remarkable Python library transforms complex backend logic into interactive web elements with minimal code. For every reconnaissance class, Streamlit crafts:
             </p>
             <ul>
                 <li> <i class="fas fa-keyboard icon"></i> Responsive text inputs for seamless target specification (domains/IPs).</li>
@@ -1095,11 +1081,11 @@
 
             <h3 class="themed-subheader"><i class="fas fa-mask icon"></i> The Stealthy GhostPath Engine</h3>
             <p>
-                Beyond active scanning, ReconX integrates the potent **GhostPath** engine for discreet, passive reconnaissance. Operating entirely in the background, GhostPath queries public data sources to gather intelligence without directly interacting with the target server, leaving no digital footprint. It comprises two specialized internal classes:
+                Beyond active scanning, ReconX integrates the potent <strong>GhostPath</strong> engine for discreet, passive reconnaissance. Operating entirely in the background, GhostPath queries public data sources to gather intelligence without directly interacting with the target server, leaving no digital footprint. It comprises two specialized internal classes:
             </p>
             <ul>
-                <li> <i class="fas fa-link icon"></i> **<code>GhostSubdomains</code>**: Leverages the power of **crt.sh** to discover subdomains from public SSL certificate transparency logs.</li>
-                <li> <i class="fas fa-archive icon"></i> **<code>GhostWayback</code>**: Extracts historical URLs and snapshots from the extensive **Wayback Machine** archives, revealing past configurations and hidden assets.</li>
+                <li> <i class="fas fa-link icon"></i> <strong><code>GhostSubdomains</code></strong>: Leverages the power of <strong>crt.sh</strong> to discover subdomains from public SSL certificate transparency logs.</li>
+                <li> <i class="fas fa-archive icon"></i> <strong><code>GhostWayback</code></strong>: Extracts historical URLs and snapshots from the extensive <strong>Wayback Machine</strong> archives, revealing past configurations and hidden assets.</li>
             </ul>
             <p>
                 GhostPath is an indispensable asset for OSINT (Open Source Intelligence) investigations and stealthy enumeration, providing critical data for a comprehensive security assessment.
@@ -1240,7 +1226,6 @@ cd ReconX</code></pre>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Add copy buttons to code blocks
             document.querySelectorAll('pre code').forEach(function(codeBlock) {
                 var pre = codeBlock.parentNode;
                 var button = document.createElement('button');
@@ -1254,7 +1239,7 @@ cd ReconX</code></pre>
                         button.textContent = 'Copied!';
                         setTimeout(function() {
                             button.textContent = 'Copy';
-                        }, 2000); // Reset button text after 2 seconds
+                        }, 2000);
                     }).catch(function(err) {
                         console.error('Failed to copy text: ', err);
                         button.textContent = 'Error!';
@@ -1266,10 +1251,9 @@ cd ReconX</code></pre>
                 pre.appendChild(button);
             });
 
-            // JavaScript for toggling nested navbar items
             document.querySelectorAll('.navbar .parent-link').forEach(function(parentLink) {
                 parentLink.addEventListener('click', function(event) {
-                    event.preventDefault(); // Prevent default link behavior
+                    event.preventDefault();
                     const parentLi = this.closest('li.parent-nav-item');
                     if (parentLi) {
                         parentLi.classList.toggle('parent-active');
@@ -1277,7 +1261,6 @@ cd ReconX</code></pre>
                 });
             });
 
-            // Optional: Close nested menus when clicking outside or another parent link
             document.addEventListener('click', function(event) {
                 if (!event.target.closest('.navbar .parent-nav-item')) {
                     document.querySelectorAll('.navbar .parent-nav-item.parent-active').forEach(function(activeParent) {
@@ -1286,7 +1269,6 @@ cd ReconX</code></pre>
                 }
             });
 
-            // Smooth scrolling for all navbar links
             document.querySelectorAll('.navbar a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
