@@ -11,7 +11,7 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #1a1a2e; /* Dark background */
+            background-color: #0c0c1b; /* Deep dark blue/purple */
             color: #e0e0e0; /* Light text color */
             display: flex; /* Use flexbox for layout */
         }
@@ -20,10 +20,10 @@
             position: fixed; /* Fixed position for floating effect */
             left: 20px; /* Distance from the left edge of the viewport */
             top: 20px; /* Distance from the top edge of the viewport */
-            bottom: 20px; /* Distance from the bottom edge of the viewport */
-            height: calc(100% - 40px); /* Adjust height to float within top/bottom margins */
+            /* MODIFIED: Removed 'bottom: 20px;' to allow it to float freely */
+            max-height: calc(100vh - 40px); /* MODIFIED: Set max-height to ensure space at bottom (100vh - top_offset - bottom_offset) */
             width: 60px; /* Collapsed width: only icons */
-            background-color: #0f3460; /* Darker blue for navbar */
+            background-color: #1a1a36; /* Slightly lighter dark blue/purple for navbar */
             padding: 20px 10px; /* Padding inside the navbar */
             border-radius: 15px; /* Rounded corners for popped-out look */
             box-shadow: 6px 0 20px rgba(0, 0, 0, 0.6); /* Stronger, darker shadow */
@@ -36,7 +36,7 @@
         }
         .navbar:hover {
             width: 240px; /* Expanded width on hover */
-            background-color: #16213e; /* Slightly lighter background on hover */
+            background-color: #25254e; /* Even lighter background on hover */
             box-shadow: 8px 0 25px rgba(0, 0, 0, 0.8); /* Even stronger shadow on hover */
         }
 
@@ -46,10 +46,10 @@
             margin: 0;
             flex-grow: 1; /* Allows the list to take available space */
             padding-top: 0px; /* Start list items from the very top of the padding */
-            transition: padding-top 0.3s ease; /* Keep transition for consistency, though it won't change here */
+            transition: padding-top 0.3s ease;
         }
         .navbar:hover ul {
-            padding-top: 0; /* Ensures it stays at 0 */
+            padding-top: 0;
         }
 
         .navbar ul li {
@@ -67,8 +67,8 @@
             transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
         }
         .navbar ul li a:hover {
-            background-color: #0a0e1a; /* Even darker hover background for links */
-            color: #4CAF50; /* Vibrant green on hover for links */
+            background-color: rgba(0, 224, 179, 0.1); /* Subtle hover background with accent color */
+            color: #00e0b3; /* Vibrant teal/aqua on hover for links */
             transform: translateX(5px); /* Slight push to the right on hover */
         }
         .navbar ul li a .nav-icon {
@@ -76,76 +76,145 @@
             width: 30px; /* Fixed width for icons to align text */
             text-align: center;
             margin-right: 10px; /* Space between icon and text */
-            color: #8edce6; /* Consistent icon color */
+            color: #b0b0d0; /* Muted light blue for icons */
             transition: color 0.2s ease;
         }
         .navbar ul li a:hover .nav-icon {
-            color: #4CAF50; /* Match icon color to text on hover */
-        }
-        .navbar ul li a .nav-text {
-            opacity: 0; /* Hide text by default */
-            transition: opacity 0.1s ease-in-out 0.2s; /* Slight delay for text appearance after width transition */
-        }
-        .navbar:hover ul li a .nav-text {
-            opacity: 1; /* Show text on hover */
+            color: #00e0b3; /* Match icon color to text on hover */
         }
         .navbar ul li a.active { /* This class would be added by JS for active section */
-            background-color: #4CAF50; /* Highlight active link with green */
-            color: #ffffff;
+            background-color: #00e0b3; /* Highlight active link with vibrant accent */
+            color: #1a1a36; /* Dark text for active link */
             font-weight: bold;
             box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3); /* Inner shadow for active state */
         }
         .navbar ul li a.active .nav-icon {
-            color: #ffffff; /* White icon for active state */
+            color: #1a1a36; /* Dark icon for active state */
         }
+
+        /* Styles for nested navbar items */
+        .navbar ul li .nested-links {
+            list-style-type: none;
+            padding-left: 0; /* Remove default ul padding */
+            max-height: 0; /* Hidden by default */
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        .navbar ul li.parent-active .nested-links {
+            max-height: 100px; /* Max height to reveal content (adjust as needed) */
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .navbar ul li .nested-links li a {
+            padding-left: 20px; /* Indent nested links */
+            font-size: 0.95em; /* Slightly smaller font for nested items */
+            color: #c0c0c0; /* Slightly muted color for nested links */
+        }
+
+        .navbar ul li .nested-links li a:hover {
+            background-color: rgba(0, 224, 179, 0.05); /* Lighter hover for nested */
+            color: #00e0b3;
+            transform: translateX(3px); /* Less pronounced slide */
+        }
+
+        .navbar ul li .nested-links li a .nav-icon {
+            font-size: 1em; /* Smaller icon for nested */
+            width: 25px; /* Adjust width */
+            margin-right: 5px; /* Less space */
+            color: #9090b0; /* Muted icon for nested */
+        }
+        .navbar ul li .nested-links li a:hover .nav-icon {
+            color: #00e0b3;
+        }
+        /* End NEW NAVBAR NESTING STYLES */
 
 
         .content-wrapper {
-            flex-grow: 1; /* Allows content to take remaining space */
-            margin-left: 100px; /* Space for the collapsed navbar (60px width + 20px left-margin + 20px padding) */
-            margin-right: 20px; /* Added right margin for symmetry with navbar's left margin */
-            padding: 20px 0; /* Vertical padding only, horizontal padding handled by inner container */
-            padding-bottom: 40px; /* Ensure space at the bottom */
-            width: calc(100% - 120px); /* Total width minus left and right margins */
-            display: flex; /* Use flexbox to center its child */
-            justify-content: center; /* Center the child horizontally */
+            flex-grow: 1;
+            margin-left: 100px;
+            margin-right: 20px;
+            padding: 20px 0;
+            padding-bottom: 40px;
+            width: calc(100% - 120px);
+            display: flex;
+            justify-content: center;
         }
 
         .container {
-            width: 100%; /* Make container fill content-wrapper area */
-            max-width: 900px; /* Max width for the main content area */
-            padding: 30px; /* Internal padding for the content itself */
-            background-color: #16213e;
+            width: 100%;
+            max-width: 900px;
+            padding: 30px;
+            padding-top: 20px; /* MODIFIED: Reduced top padding */
+            background-color: #1a1a36; /* Match navbar background */
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            margin: 0 auto; /* This centers the container within content-wrapper's available space */
+            margin: 0 auto;
         }
 
         h1, h2, h3 {
-            color: #e0e0e0;
+            color: #00e0b3; /* Vibrant teal/aqua for headings */
             margin-top: 1.5em;
             margin-bottom: 0.8em;
         }
         h1 {
             font-size: 2.8em;
             text-align: center;
+            margin-top: 0; /* MODIFIED: Removed top margin from h1 */
             margin-bottom: 20px;
             padding-bottom: 15px;
-            border-bottom: 2px solid #0f3460;
+            border-bottom: 2px solid #3a3a5a; /* Muted border */
         }
+
+        /* Styles for Overview Section with Image and Text Side-by-Side */
+        .overview-section-content {
+            display: flex;
+            flex-wrap: wrap; /* Allows wrapping on smaller screens */
+            align-items: flex-start; /* Aligns items to the top */
+            gap: 20px; /* Space between text and image */
+            margin-bottom: 20px; /* Space below this section */
+        }
+
+        .overview-text {
+            flex: 2; /* Takes up 2 parts of the available space, e.g., ~66% */
+            min-width: 300px; /* Ensures text doesn't get too squished */
+        }
+
+        .overview-image-container {
+            flex: 1; /* Takes up 1 part of the available space, e.g., ~33% */
+            display: flex; /* Use flex to center image within its container */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            min-width: 150px; /* Minimum width for the image container */
+        }
+
+        .overview-image {
+            max-width: 100%; /* Ensure image scales down */
+            height: auto; /* Maintain aspect ratio */
+            object-fit: contain;
+            filter: drop-shadow(0 0 15px rgba(0, 224, 179, 0.5)); /* Subtle glow effect */
+            border-radius: 8px; /* Slightly rounded corners for the image */
+        }
+
         h2 {
             font-size: 2em;
-            border-bottom: 1px solid #0f3460;
+            border-bottom: 1px solid #3a3a5a; /* Muted border */
             padding-bottom: 5px;
             margin-bottom: 1em;
         }
         h3 {
             font-size: 1.5em;
-            color: #8edce6;
+            color: #b0b0d0; /* Muted light blue for subheadings */
+            margin-top: 0.5em; /* Adjust margin for h3 inside cards */
+            margin-bottom: 0.5em;
         }
         .badges img {
             margin-right: 5px;
             margin-bottom: 5px;
+            filter: grayscale(20%) brightness(120%); /* Subtle filter to match theme */
         }
         p {
             margin-bottom: 1em;
@@ -160,27 +229,28 @@
         }
 
         a {
-            color: #4CAF50;
+            color: #00e0b3; /* Vibrant teal/aqua for links */
             text-decoration: none;
         }
         a:hover {
             text-decoration: underline;
         }
         code {
-            background-color: #0d1320;
+            background-color: #0d0d20; /* Darker background for inline code */
             padding: 2px 5px;
             border-radius: 4px;
             font-family: 'Courier New', Courier, monospace;
             color: #e0e0e0;
         }
         pre {
-            background-color: #0a0e1a;
+            background-color: #080816; /* Almost black, slightly tinted for pre blocks */
             color: #e0e0e0;
             padding: 15px;
             border-radius: 8px;
             overflow-x: auto;
             font-family: 'Courier New', Courier, monospace;
             margin-bottom: 1.5em;
+            position: relative; /* Needed for positioning the copy button */
         }
         pre code {
             background-color: transparent;
@@ -191,27 +261,542 @@
         hr {
             border: 0;
             height: 1px;
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+            background-image: linear-gradient(to right, rgba(0, 224, 179, 0), rgba(0, 224, 179, 0.3), rgba(0, 224, 179, 0)); /* Gradient border with accent color */
             margin: 2em 0;
         }
         .icon {
             margin-right: 8px;
-            color: #8edce6;
+            color: #b0b0d0; /* Muted light blue for general icons */
         }
         .text-center {
             text-align: center;
         }
-        .contact-info {
+        /* Removed .contact-info styles as it's replaced */
+
+
+        /* Styles for Feature Cards */
+        .features-grid {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
+            gap: 20px; /* Space between cards */
+            justify-content: center; /* Center cards in the grid */
             margin-top: 20px;
         }
-        .contact-info div {
-            flex-basis: calc(50% - 20px);
-            text-align: center;
+
+        .feature-card {
+            background-color: #1a1a36; /* Darker background for cards */
+            border-radius: 10px;
+            padding: 25px; /* Increased padding */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            flex: 1 1 calc(50% - 20px); /* Two cards per row, with gap */
+            min-width: 280px; /* Minimum width before wrapping */
+            box-sizing: border-box; /* Include padding in width calculation */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Smooth transitions */
+            border: 1px solid transparent; /* Initial transparent border */
+            position: relative; /* Needed for pseudo-elements */
+            overflow: hidden; /* Hide anything overflowing, important for subtle effects */
         }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px; /* Thin accent bar at the top */
+            background-color: #00e0b3; /* Accent color */
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            transform: translateY(-100%); /* Start off-screen */
+            transition: transform 0.3s ease-out; /* Smooth transition for the bar */
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px); /* More pronounced lift effect on hover */
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.7); /* Enhanced shadow on hover */
+            border-color: rgba(0, 224, 179, 0.5); /* Subtle border on hover */
+        }
+
+        .feature-card:hover::before {
+            transform: translateY(0); /* Slide the accent bar into view */
+        }
+
+        .feature-card h3 {
+            color: #00e0b3; /* Feature heading color */
+            margin-top: 0;
+            font-size: 1.4em; /* Slightly larger heading */
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Space between icon and text */
+            margin-bottom: 15px; /* More space below heading */
+        }
+
+        .feature-card h3 .fas {
+            font-size: 1.2em; /* Icon size relative to heading */
+            color: #b0b0d0; /* Icon color */
+            transition: color 0.3s ease;
+        }
+
+        .feature-card:hover h3 .fas {
+            color: #e0e0e0; /* Change icon color on hover */
+        }
+
+        .feature-card ul {
+            padding-left: 25px; /* Indent list items */
+            list-style-type: '⚡ '; /* Custom lightning bolt bullet point */
+            color: #b0b0d0; /* Default color for list text */
+        }
+        .feature-card ul li {
+            margin-bottom: 8px; /* More space between list items */
+            color: #e0e0e0; /* Main list item text color */
+        }
+        .feature-card ul li::marker {
+            color: #00e0b3; /* Color the custom bullet */
+        }
+        /* End NEW STYLES FOR FEATURE CARDS */
+
+        /* Styles for Architecture Component Cards */
+        .architecture-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        .architecture-card {
+            background-color: #1a1a36;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            flex: 1 1 calc(33% - 20px); /* Three cards per row */
+            min-width: 250px;
+            box-sizing: border-box;
+            text-align: center;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            border: 1px solid #3a3a5a; /* Subtle border */
+        }
+
+        .architecture-card:hover {
+            transform: translateY(-5px);
+            background-color: #25254e; /* Slightly lighter on hover */
+            border-color: #00e0b3;
+        }
+
+        .architecture-card .fas {
+            font-size: 2.5em;
+            color: #00e0b3; /* Accent color for icons */
+            margin-bottom: 10px;
+        }
+
+        .architecture-card h4 {
+            color: #e0e0e0;
+            font-size: 1.2em;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .architecture-card p {
+            font-size: 0.9em;
+            color: #b0b0d0;
+            margin-bottom: 0;
+        }
+
+        /* Common style for the two specific sub-headings */
+        h3.themed-subheader {
+            color: #B19CD9; /* Light Purple */
+            text-shadow: 0 0 5px rgba(177, 156, 217, 0.3); /* Subtle purple glow */
+            font-size: 1.5em; /* Keep original h3 size */
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+        }
+        h3.themed-subheader .fas {
+            color: #B19CD9; /* Match icon to heading color */
+        }
+
+        /* REVISED STYLE FOR LIVE DEMO BUTTON - "Glassmorphism" effect, removed underline */
+        .live-demo-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 30px; /* Slightly more padding for a bolder feel */
+            margin: 20px auto;
+            background-color: rgba(0, 224, 179, 0.15); /* Semi-transparent accent color */
+            color: #00e0b3; /* Vibrant accent color for text */
+            font-size: 1.25em; /* Slightly larger font */
+            font-weight: bold;
+            text-decoration: none; /* REMOVED UNDERLINE */
+            border-radius: 10px; /* Moderately rounded corners */
+            border: 1px solid rgba(0, 224, 179, 0.4); /* Semi-transparent accent border */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Softer, slightly diffused shadow */
+            backdrop-filter: blur(8px); /* Frosted glass effect */
+            -webkit-backdrop-filter: blur(8px); /* For Safari support */
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .live-demo-button:hover {
+            background-color: rgba(0, 224, 179, 0.3); /* More opaque accent on hover */
+            color: #e0e0e0; /* Light text on hover for better contrast */
+            transform: translateY(-3px); /* Gentle lift effect */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Deeper shadow on hover */
+            border-color: rgba(0, 224, 179, 0.8); /* More prominent border on hover */
+        }
+
+        .live-demo-button .fas,
+        .live-demo-button .fab {
+            margin-right: 12px; /* Increased margin for icon */
+            font-size: 1.1em; /* Adjust icon size with text */
+            color: #00e0b3; /* Accent color for icon by default */
+            transition: color 0.3s ease;
+        }
+
+        .live-demo-button:hover .fas,
+        .live-demo-button:hover .fab {
+            color: #e0e0e0; /* Match icon color to text on hover */
+        }
+
+        /* NEW: Styles for the main action buttons at the top */
+        .main-action-buttons {
+            display: flex;
+            flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+            justify-content: center;
+            gap: 20px; /* Space between buttons */
+            margin: 30px auto; /* Margin above and below the button group */
+            width: fit-content; /* Fit content to buttons */
+            max-width: 100%; /* Ensure it doesn't overflow */
+        }
+
+        .main-action-buttons .live-demo-button {
+            /* MODIFIED: Reduced size for these specific buttons */
+            font-size: 1em; /* Smaller font size */
+            padding: 10px 20px; /* Smaller padding */
+            margin: 0; /* Override default margin from .live-demo-button */
+            flex-shrink: 0; /* Prevent buttons from shrinking too much */
+        }
+
+        .main-action-buttons .live-demo-button .fas,
+        .main-action-buttons .live-demo-button .fab {
+            /* MODIFIED: Adjusted icon margin and size for these specific buttons */
+            margin-right: 8px; /* Slightly reduced margin for icon */
+            font-size: 1em; /* Keep icon size proportional to text */
+        }
+
+
+        .separator-text {
+            text-align: center;
+            margin: 40px 0 20px 0; /* More spacing for the separator */
+            font-style: italic;
+            color: #b0b0d0; /* Muted text */
+            font-size: 1.1em;
+            position: relative;
+        }
+        .separator-text::before,
+        .separator-text::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 30%; /* Shorter lines */
+            height: 1px;
+            background-color: #3a3a5a; /* Muted line color */
+        }
+        .separator-text::before {
+            left: 5%;
+        }
+        .separator-text::after {
+            right: 5%;
+        }
+
+        /* NEW: Copy button for code blocks */
+        .copy-button {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background-color: rgba(0, 224, 179, 0.2); /* Semi-transparent accent */
+            color: #e0e0e0;
+            border: 1px solid rgba(0, 224, 179, 0.4);
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 0.8em;
+            cursor: pointer;
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+            z-index: 1; /* Ensure button is above code */
+        }
+
+        .copy-button:hover {
+            background-color: rgba(0, 224, 179, 0.4);
+            border-color: rgba(0, 224, 179, 0.7);
+            color: #ffffff;
+        }
+
+        .copy-button:active {
+            background-color: rgba(0, 224, 179, 0.6);
+            transform: translateY(1px);
+        }
+
+        /* Styles for "Usage Guide" section enhancements */
+        .usage-guide-container {
+            background-color: #121228; /* Slightly lighter than main container, darker than cards */
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 20px;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.4);
+            border: 1px solid #2a2a4a; /* Subtle border */
+        }
+
+        .usage-guide-item {
+            background-color: #1a1a36; /* Matching feature card background */
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 15px; /* Spacing between items */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+            display: flex; /* Use flexbox for icon and text alignment */
+            align-items: flex-start; /* Align icon and text to top */
+            gap: 15px; /* Space between icon and text */
+        }
+
+        .usage-guide-item:last-child {
+            margin-bottom: 0; /* No margin after the last item */
+        }
+
+        .usage-guide-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);
+            background-color: #25254e; /* Slightly lighter on hover */
+        }
+
+        .usage-guide-item h3 {
+            color: #00e0b3; /* Accent color for subheadings */
+            margin-top: 0;
+            margin-bottom: 5px; /* Closer to paragraph */
+            font-size: 1.3em; /* Slightly smaller than main h3, but prominent */
+            flex-shrink: 0; /* Prevent icon from shrinking */
+        }
+
+        .usage-guide-item h3 .fas {
+            font-size: 1.1em; /* Adjust icon size within heading */
+            color: #b0b0d0; /* Muted icon color by default */
+            transition: color 0.2s ease;
+        }
+
+        .usage-guide-item:hover h3 .fas {
+            color: #e0e0e0; /* Change icon color on hover */
+        }
+
+        .usage-guide-item p {
+            margin-bottom: 0; /* Remove default paragraph margin */
+            flex-grow: 1; /* Allow paragraph to take remaining space */
+        }
+
+        /* NEW: Base style for Disclaimer and License sections */
+        .section-card {
+            background-color: #121228; /* Slightly lighter than main container */
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid #3a3a5a; /* Muted base border */
+            position: relative; /* For the accent bar */
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .section-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px; /* Thin accent bar at the top */
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            transform: translateY(-100%); /* Start off-screen */
+            transition: transform 0.3s ease-out; /* Smooth transition for the bar */
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .section-card:hover::before {
+            transform: translateY(0); /* Slide the accent bar into view */
+        }
+
+        .section-card h2 {
+            margin-top: 0; /* Adjust margin for h2 inside this container */
+            border-bottom: none; /* Remove border if already within a contained section */
+            padding-bottom: 0;
+            color: #00e0b3; /* Keep main accent color for H2 */
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px; /* More space below heading */
+        }
+
+        .section-card h2 .fas {
+            font-size: 1.1em; /* Adjust icon size */
+            color: #b0b0d0; /* Muted icon color */
+            transition: color 0.2s ease;
+        }
+
+        .section-card:hover h2 .fas {
+            color: #e0e0e0; /* Match icon color on hover */
+        }
+
+        /* Specific styles for Disclaimer */
+        .disclaimer-card {
+            border-color: rgba(255, 99, 71, 0.5); /* Tomato red border */
+        }
+        .disclaimer-card::before {
+            background-color: #FF6347; /* Tomato red accent bar */
+        }
+        .disclaimer-card h2 {
+            color: #FF6347; /* Match heading to accent */
+        }
+        .disclaimer-card h2 .fas {
+            color: #FF6347; /* Match icon to accent */
+        }
+        .disclaimer-card:hover {
+            border-color: #FF6347; /* Stronger red border on hover */
+        }
+
+        /* Specific styles for License */
+        .license-card {
+            border-color: rgba(100, 149, 237, 0.5); /* Cornflower blue border */
+        }
+        .license-card::before {
+            background-color: #6495ED; /* Cornflower blue accent bar */
+        }
+        .license-card h2 {
+            color: #6495ED; /* Match heading to accent */
+        }
+        .license-card h2 .fas {
+            color: #6495ED; /* Match icon to accent */
+        }
+        .license-card:hover {
+            border-color: #6495ED; /* Stronger blue border on hover */
+        }
+
+        /* Styles for "Get Involved & Connect" section */
+        .get-involved-section {
+            background: linear-gradient(135deg, #1f1f3a 0%, #15152b 100%); /* Subtle gradient background */
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 40px; /* More spacing from previous section */
+            margin-bottom: 40px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6); /* More pronounced shadow */
+            border: 2px solid rgba(0, 224, 179, 0.3); /* Accent border */
+            transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+            position: relative;
+            overflow: hidden;
+            z-index: 0; /* Ensure content is above pseudo-element on hover */
+        }
+
+        .get-involved-section::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(0, 224, 179, 0.1) 0%, transparent 70%); /* Subtle light glow effect */
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: -1; /* Ensure this is behind content */
+        }
+
+        .get-involved-section:hover::before {
+            opacity: 1; /* Show glow on hover */
+        }
+
+        .get-involved-section h2 {
+            font-size: 2.5em; /* Larger heading */
+            text-align: center;
+            color: #00e0b3; /* Vibrant accent color */
+            margin-top: 0;
+            margin-bottom: 30px; /* More space below heading */
+            border-bottom: 2px solid rgba(0, 224, 179, 0.4); /* Accent border */
+            padding-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .get-involved-section h2 .fas {
+            color: #00e0b3; /* Match icon to heading */
+            margin-right: 15px;
+        }
+
+        .get-involved-section p {
+            font-size: 1.1em;
+            color: #d0d0d0;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Spacing for sections within Get Involved */
+        .contributing-content {
+            margin-top: 0; /* No top margin as it follows the main H2 */
+            position: relative;
+            z-index: 1;
+        }
+
+        /* NEW: Styles for the redesigned social links grid */
+        .social-links-grid {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0; /* Margin above and below the grid */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Center items in the grid */
+            gap: 15px; /* Spacing between links */
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-links-grid li {
+            margin-bottom: 0; /* Remove default list item margin */
+        }
+
+        .social-link-item {
+            display: inline-flex; /* For side-by-side icon and text */
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(0, 224, 179, 0.1); /* Subtle transparent background */
+            color: #00e0b3; /* Accent color for text */
+            text-decoration: none;
+            border-radius: 25px; /* Pill shape */
+            border: 1px solid rgba(0, 224, 179, 0.4); /* Border with accent color */
+            transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+            font-size: 1.05em;
+            font-weight: 500;
+        }
+
+        .social-link-item:hover {
+            background-color: rgba(0, 224, 179, 0.3); /* More opaque on hover */
+            border-color: rgba(0, 224, 179, 0.8);
+            transform: translateY(-2px); /* Slight lift */
+            color: #e0e0e0; /* Lighter text on hover */
+            text-decoration: none; /* Ensure no underline on hover */
+        }
+
+        .social-link-item .fas,
+        .social-link-item .fab {
+            margin-right: 8px; /* Space between icon and text */
+            font-size: 1.1em;
+            color: #b0b0d0; /* Muted color for icons normally */
+            transition: color 0.3s ease;
+        }
+
+        .social-link-item:hover .fas,
+        .social-link-item:hover .fab {
+            color: #e0e0e0; /* Match text color on hover */
+        }
+
+
         /* Media query for smaller screens */
         @media (max-width: 768px) {
             body {
@@ -261,6 +846,10 @@
             .navbar ul li a .nav-text {
                 opacity: 1; /* Always show text on small screens in horizontal bar */
             }
+            /* Adjustments for nested navbar items on small screens */
+            .navbar ul li .nested-links {
+                display: none; /* Hide nested items entirely on small screens if horizontal */
+            }
             .content-wrapper {
                 margin-left: 0; /* Remove left margin on small screens */
                 margin-right: 0; /* Remove right margin on small screens */
@@ -271,8 +860,74 @@
             .container {
                 padding: 20px; /* Adjust container padding for small screens */
             }
-            .contact-info div {
-                flex-basis: 100%;
+            /* Removed .contact-info div on small screens */
+            h1 {
+                font-size: 2.2em;
+            }
+            /* Adjustments for overview section on small screens */
+            .overview-section-content {
+                flex-direction: column; /* Stack text and image vertically */
+                align-items: center;
+            }
+            .overview-text, .overview-image-container {
+                flex: none; /* Remove flex sizing */
+                width: 100%; /* Take full width */
+                min-width: unset;
+            }
+            .overview-image {
+                width: 150px; /* Smaller image for mobile */
+            }
+            /* Adjustments for feature cards on small screens */
+            .features-grid {
+                flex-direction: column; /* Stack cards vertically on small screens */
+            }
+            .feature-card {
+                width: 100%; /* Full width for each card */
+                flex: none; /* Remove flex sizing */
+                min-width: unset;
+            }
+            /* Architecture grid adjustments for smaller screens */
+            .architecture-grid .architecture-card {
+                flex: 1 1 100%; /* Stack vertically */
+                min-width: unset;
+            }
+            /* Usage Guide adjustments for smaller screens */
+            .usage-guide-item {
+                flex-direction: column; /* Stack icon and text vertically */
+                align-items: flex-start;
+                gap: 5px; /* Reduce gap */
+            }
+            .usage-guide-item h3 {
+                margin-bottom: 0; /* Remove margin below heading in stacked layout */
+            }
+            .usage-guide-item h3 .fas {
+                margin-right: 5px; /* Keep a little margin for the icon if it's inline with text */
+            }
+            /* Disclaimer/License adjustments for smaller screens */
+            .section-card h2 {
+                flex-direction: column; /* Stack icon and text vertically */
+                align-items: flex-start;
+            }
+            .section-card h2 .fas {
+                margin-right: 0;
+                margin-bottom: 5px;
+            }
+            /* Get Involved section for small screens */
+            .get-involved-section {
+                padding: 20px;
+                margin-top: 30px;
+                margin-bottom: 30px;
+            }
+            .get-involved-section h2 {
+                font-size: 2em;
+                margin-bottom: 20px;
+            }
+            /* Adjust spacing for main action buttons on small screens */
+            .main-action-buttons {
+                flex-direction: column; /* Stack buttons vertically */
+                align-items: center; /* Center stacked buttons */
+                gap: 15px; /* Adjust gap for stacked buttons */
+                margin: 20px auto; /* Adjust margin */
             }
         }
     </style>
@@ -285,16 +940,20 @@
             <li><a href="#under-the-hood"><i class="fas fa-cogs nav-icon"></i> <span class="nav-text">Under the Hood</span></a></li>
             <li><a href="#installation"><i class="fas fa-download nav-icon"></i> <span class="nav-text">Installation & Usage</span></a></li>
             <li><a href="#usage-guide"><i class="fas fa-book-open nav-icon"></i> <span class="nav-text">Usage Guide</span></a></li>
-            <li><a href="#disclaimer"><i class="fas fa-triangle-exclamation nav-icon"></i> <span class="nav-text">Disclaimer</span></a></li>
-            <li><a href="#license"><i class="fas fa-file-contract nav-icon"></i> <span class="nav-text">License</span></a></li>
-            <li><a href="#contributing"><i class="fas fa-handshake nav-icon"></i> <span class="nav-text">Contributing</span></a></li>
-            <li><a href="#contact"><i class="fas fa-address-book nav-icon"></i> <span class="nav-text">Contact</span></a></li>
+            <li class="parent-nav-item">
+                <a href="javascript:void(0);" class="parent-link"><i class="fas fa-gavel nav-icon"></i> <span class="nav-text">Legal Information</span></a>
+                <ul class="nested-links">
+                    <li><a href="#disclaimer"><i class="fas fa-triangle-exclamation nav-icon"></i> <span class="nav-text">Disclaimer</span></a></li>
+                    <li><a href="#license"><i class="fas fa-file-contract nav-icon"></i> <span class="nav-text">License</span></a></li>
+                </ul>
+            </li>
+            <li><a href="#get-involved"><i class="fas fa-users nav-icon"></i> <span class="nav-text">Get Involved</span></a></li>
         </ul>
     </div>
 
     <div class="content-wrapper">
         <div class="container">
-            <h1><i class="fas fa-shield-alt icon"></i> ReconX — Network Reconnaissance Toolkit</h1>
+            <h1><i class="fas fa-shield-alt icon"></i> <strong>ReconX</strong> — Network Reconnaissance Toolkit</h1>
 
             <div class="badges text-center">
                 <img src="https://img.shields.io/badge/Python-3.x-blue.svg" alt="Python">
@@ -310,110 +969,160 @@
                 <img src="https://img.shields.io/badge/Maintained%3F-Yes-66c2a5.svg" alt="Maintained">
             </div>
 
+            <div class="main-action-buttons">
+                <a href="https://github.com/atharvbyadav/ReconX" target="_blank" class="live-demo-button">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+                <a href="https://reconx.streamlit.app/" target="_blank" class="live-demo-button">
+                    <i class="fas fa-external-link-alt"></i> Live Site
+                </a>
+            </div>
+
             <hr>
 
             <h2 id="overview"><i class="fas fa-map-pin icon"></i> Overview</h2>
-            <p>
-                **ReconX** is a powerful, all-in-one **network security reconnaissance toolkit** built with a modern **Streamlit web interface**. Designed for **penetration testers, ethical hackers, red teamers**, and **cybersecurity enthusiasts**, ReconX brings together essential active and passive recon techniques in one lightweight, interactive dashboard.
-            </p>
-            <p>
-                Whether you’re prepping for a CTF, conducting OSINT, scanning your own infrastructure, or just learning the ropes, **ReconX empowers you to explore and assess digital footprints — securely, silently, and effectively**.
-            </p>
-            <p>
-                <i class="fas fa-link icon"></i> **Live Demo**: <a href="https://reconx.streamlit.app/" target="_blank">ReconX Web App</a> <br>
-                <i class="fas fa-code icon"></i> **Source Code**: <a href="https://github.com/atharvbyadav/ReconX" target="_blank">ReconX GitHub</a>
-            </p>
+            <div class="overview-section-content">
+                <div class="overview-text">
+                    <p>
+                        <strong>ReconX</strong> is a powerful, all-in-one <strong>network security reconnaissance toolkit</strong> built with a modern <strong>Streamlit web interface</strong>. Designed for <strong>penetration testers, ethical hackers, red teamers</strong>, and <strong>cybersecurity enthusiasts</strong>, ReconX brings together essential active and passive recon techniques in one lightweight, interactive dashboard.
+                    </p>
+                    <p>
+                        Whether you’re prepping for a CTF, conducting OSINT, scanning your own infrastructure, or just learning the ropes, <strong>ReconX empowers you to explore and assess digital footprints — securely, silently, and effectively</strong>.
+                    </p>
+                    <p>
+                        <i class="fas fa-link icon"></i> <strong>Live Demo</strong>: <a href="https://reconx.streamlit.app/" target="_blank">ReconX Web App</a> <br>
+                        <i class="fas fa-code icon"></i> <strong>Source Code</strong>: <a href="https://github.com/atharvbyadav/ReconX" target="_blank">ReconX GitHub</a>
+                    </p>
+               </div>
+                <div class="overview-image-container">
+                    <img src="https://github.com/atharvbyadav/ReconX/raw/main/assets/ReconX.png" alt="ReconX Logo" class="overview-image">
+                </div>
+            </div>
 
             <hr>
 
             <h2 id="features"><i class="fas fa-rocket icon"></i> Features</h2>
 
-            <h3>1️⃣ Port Scanning</h3>
-            <ul>
-                <li>Multithreaded TCP port scanner (range: 1–500)</li>
-                <li>Detects open ports, grabs banners, highlights outdated services</li>
-            </ul>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3><i class="fas fa-network-wired"></i> Port Scanning</h3>
+                    <ul>
+                        <li>Multithreaded TCP port scanner (range: 1–500)</li>
+                        <li>Detects open ports, grabs banners, highlights outdated services</li>
+                    </ul>
+                </div>
 
-            <h3>2️⃣ OS Fingerprinting</h3>
-            <ul>
-                <li>Basic TCP handshake analysis to infer Linux/Unix vs Windows OS</li>
-            </ul>
+                <div class="feature-card">
+                    <h3><i class="fas fa-fingerprint"></i> OS Fingerprinting</h3>
+                    <ul>
+                        <li>Basic TCP handshake analysis to infer Linux/Unix vs Windows OS</li>
+                    </ul>
+                </div>
 
-            <h3>3️⃣ WHOIS Lookup</h3>
-            <ul>
-                <li>Retrieves domain ownership and registrar information</li>
-            </ul>
+                <div class="feature-card">
+                    <h3><i class="fas fa-id-card-alt"></i> WHOIS Lookup</h3>
+                    <ul>
+                        <li>Retrieves domain ownership and registrar information</li>
+                    </ul>
+                </div>
 
-            <h3>4️⃣ Reverse DNS Lookup</h3>
-            <ul>
-                <li>Resolves IPs back to domain names (if records exist)</li>
-            </ul>
+                <div class="feature-card">
+                    <h3><i class="fas fa-sync-alt"></i> Reverse DNS Lookup</h3>
+                    <ul>
+                        <li>Resolves IPs back to domain names (if records exist)</li>
+                    </ul>
+                </div>
 
-            <h3>5️⃣ DNS Enumeration</h3>
-            <ul>
-                <li>Retrieves A, AAAA, MX, NS, CNAME, TXT records for a domain</li>
-            </ul>
+                <div class="feature-card">
+                    <h3><i class="fas fa-cloud"></i> DNS Enumeration</h3>
+                    <ul>
+                        <li>Retrieves A, AAAA, MX, NS, CNAME, TXT records for a domain</li>
+                    </ul>
+                </div>
 
-            <h3>6️⃣ GhostPath (Passive Recon)</h3>
-            <ul>
-                <li>Extracts subdomains via `crt.sh`</li>
-                <li>Gathers archived URLs via the Wayback Machine</li>
-                <li>Fully passive — no requests to target servers</li>
-            </ul>
+                <div class="feature-card">
+                    <h3><i class="fas fa-mask"></i> GhostPath (Passive Recon)</h3>
+                    <ul>
+                        <li>Extracts subdomains via "crt.sh"</li>
+                        <li>Gathers archived URLs via the Wayback Machine</li>
+                        <li>Fully passive — no requests to target servers</li>
+                    </ul>
+                </div>
+            </div>
 
             <hr>
 
-            <h2 id="under-the-hood"><i class="fas fa-brain icon"></i> Under the Hood</h2>
-            <p>
-                **ReconX** may look like a polished web app — and it is — but under the hood, it’s powered by a well-organized collection of recon logic packed efficiently into a single, maintainable Python script.
-            </p>
-            <p>
-                Instead of scattering logic across multiple files or scripts, all core functionalities — **Port Scanning**, **OS Fingerprinting**, **WHOIS Lookup**, **DNS Enumeration**, **Reverse DNS**, and **GhostPath** — are implemented as **individual Python classes within one main file**.
-            </p>
-            <p>This approach provides:</p>
-            <ul>
-                <li> A clean, modular structure without file sprawl</li>
-                <li> Easier debugging — you only focus on the relevant class</li>
-                <li> Smooth onboarding for contributors or learners</li>
-            </ul>
-
-            <h3><i class="fas fa-globe icon"></i> Streamlit-Powered UI</h3>
-            <p>
-                The app’s interface is built with **Streamlit**, enabling a fast, reactive, and browser-based frontend. Each recon class is wrapped in Streamlit UI components:
-            </p>
-            <ul>
-                <li> Text inputs for target domains/IPs</li>
-                <li> Buttons to trigger scans</li>
-                <li> Sections with expanders, tables, and logs to display results</li>
-            </ul>
-
-            <h3><i class="fas fa-ghost icon"></i> Integrated GhostPath Engine</h3>
-            <p>
-                ReconX also embeds **GhostPath**, a passive reconnaissance engine that runs directly in the app. It consists of two internal classes:
-            </p>
-            <ul>
-                <li> `GhostSubdomains`: Fetches subdomains using **crt.sh**</li>
-                <li> `GhostWayback`: Gathers archived URLs from the **Wayback Machine**</li>
-            </ul>
-            <p>
-                These components operate quietly in the background, leaving no footprint on the target. They're perfect for stealthy reconnaissance workflows and OSINT-based enumeration.
+            <h2 id="under-the-hood"><i class="fas fa-microchip icon"></i> Under the Hood: The Engineering Behind ReconX</h2>
+            <p class="intro-paragraph" style="text-align: center; font-size: 1.1em; color: #b0b0d0; margin-bottom: 2em;">
+                <strong>ReconX</strong> isn't just a powerful toolkit; it's a testament to efficient, modular engineering. Beneath its sleek Streamlit interface lies a robust, single-file architecture designed for clarity, performance, and easy extensibility.
             </p>
 
-            <h3><i class="fas fa-check-double icon"></i> Why This Architecture Works</h3>
-            <ul>
-                <li> **All-in-one file** means simpler code navigation and faster debugging</li>
-                <li> **Class-based design** provides modularity and clarity</li>
-                <li> **Streamlit frontend** offers interactivity without extra complexity</li>
-                <li> **GhostPath integration** brings passive recon into your active workflow</li>
-            </ul>
+            <h3><i class="fas fa-layer-group icon"></i> Core Architecture: Single-File Modularity</h3>
+            <p>
+                Unlike complex multi-file projects, ReconX consolidates all its core reconnaissance functionalities—from Port Scanning to GhostPath—into a single, meticulously organized Python script. Each distinct recon technique is encapsulated within its own dedicated Python class, ensuring a clean, logical separation of concerns.
+            </p>
+            <p>This streamlined approach offers significant advantages:</p>
+            <div class="architecture-grid">
+                <div class="architecture-card">
+                    <i class="fas fa-sitemap"></i>
+                    <h4>Modular Design</h4>
+                    <p>Each feature is a self-contained class, promoting clear separation and easier development.</p>
+                </div>
+                <div class="architecture-card">
+                    <i class="fas fa-bug-slash"></i>
+                    <h4>Simplified Debugging</h4>
+                    <p>With logic centralized, issues are quicker to pinpoint and resolve within their specific class.</p>
+                </div>
+                <div class="architecture-card">
+                    <i class="fas fa-handshake"></i>
+                    <h4>Effortless Contributions</h4>
+                    <p>A single-file structure lowers the barrier to entry, welcoming new contributors to understand and extend features.</p>
+                </div>
+            </div>
 
+            <h3 class="themed-subheader"><i class="fas fa-globe-americas icon"></i> Interactive Frontend with Streamlit</h3>
+            <p>
+                The intuitive, browser-based user interface of ReconX is dynamically powered by **Streamlit**. This remarkable Python library transforms complex backend logic into interactive web elements with minimal code. For every reconnaissance class, Streamlit crafts:
+            </p>
+            <ul>
+                <li> <i class="fas fa-keyboard icon"></i> Responsive text inputs for seamless target specification (domains/IPs).</li>
+                <li> <i class="fas fa-play-circle icon"></i> Engaging buttons to trigger scans and analyses instantly.</li>
+                <li> <i class="fas fa-chart-bar icon"></i> Organized sections utilizing expandable elements, clean tables, and comprehensive logs to present results clearly.</li>
+            </ul>
+            <p>
+                This integration ensures that powerful security tasks are accessible and understandable for users of all skill levels.
+            </p>
+
+            <h3 class="themed-subheader"><i class="fas fa-mask icon"></i> The Stealthy GhostPath Engine</h3>
+            <p>
+                Beyond active scanning, ReconX integrates the potent **GhostPath** engine for discreet, passive reconnaissance. Operating entirely in the background, GhostPath queries public data sources to gather intelligence without directly interacting with the target server, leaving no digital footprint. It comprises two specialized internal classes:
+            </p>
+            <ul>
+                <li> <i class="fas fa-link icon"></i> **<code>GhostSubdomains</code>**: Leverages the power of **crt.sh** to discover subdomains from public SSL certificate transparency logs.</li>
+                <li> <i class="fas fa-archive icon"></i> **<code>GhostWayback</code>**: Extracts historical URLs and snapshots from the extensive **Wayback Machine** archives, revealing past configurations and hidden assets.</li>
+            </ul>
+            <p>
+                GhostPath is an indispensable asset for OSINT (Open Source Intelligence) investigations and stealthy enumeration, providing critical data for a comprehensive security assessment.
+            </p>
             <hr>
 
             <h2 id="installation"><i class="fas fa-tools icon"></i> Installation & Usage</h2>
 
+            <p style="text-align: center; font-size: 1.1em; margin-bottom: 25px;">
+                The quickest way to experience ReconX is through its <strong style="color: #00e0b3;">live web application</strong>.
+                You can use it <strong style="color: #00e0b3;">directly, free of cost, fully anonymously, and without any limitations</strong> on usage!
+            </p>
+            <div class="text-center">
+                <a href="https://reconx.streamlit.app/" target="_blank" class="live-demo-button">
+                    <i class="fas fa-play-circle"></i> Try ReconX Live Now!
+                </a>
+            </div>
+
+            <div class="separator-text">Alternatively, host it yourself:</div>
+
             <h3>Prerequisites</h3>
             <p>
-                Ensure you have **Python 3.x** installed.
+                Ensure you have <strong>Python 3.x</strong> installed.
             </p>
 
             <h3>Clone the Repository</h3>
@@ -430,80 +1139,97 @@ cd ReconX</code></pre>
 
             <h2 id="usage-guide"><i class="fas fa-book icon"></i> Usage Guide</h2>
 
-            <h3><i class="fas fa-ethernet icon"></i> Port Scanning</h3>
-            <p>
-                Enter the **Target IP**, hit **Scan**, and see open ports, banners, and potential risks.
-            </p>
+            <div class="usage-guide-container">
+                <div class="usage-guide-item">
+                    <h3><i class="fas fa-ethernet icon"></i> Port Scanning</h3>
+                    <p>
+                        Enter the <strong>Target IP</strong>, hit <strong>Scan</strong>, and see open ports, banners, and potential risks.
+                    </p>
+                </div>
 
-            <h3><i class="fas fa-laptop-code icon"></i> OS Fingerprinting</h3>
-            <p>
-                Enter an IP and run detection to infer the OS type.
-            </p>
+                <div class="usage-guide-item">
+                    <h3><i class="fas fa-laptop-code icon"></i> OS Fingerprinting</h3>
+                    <p>
+                        Enter an IP and run detection to infer the OS type.
+                    </p>
+                </div>
 
-            <h3><i class="fas fa-address-card icon"></i> WHOIS Lookup</h3>
-            <p>
-                Enter a domain or IP to view WHOIS data.
-            </p>
+                <div class="usage-guide-item">
+                    <h3><i class="fas fa-address-card icon"></i> WHOIS Lookup</h3>
+                    <p>
+                        Enter a domain or IP to view WHOIS data.
+                    </p>
+                </div>
 
-            <h3><i class="fas fa-sync-alt icon"></i> Reverse DNS Lookup</h3>
-            <p>
-                Reverse resolve an IP to any registered domain.
-            </p>
+                <div class="usage-guide-item">
+                    <h3><i class="fas fa-sync-alt icon"></i> Reverse DNS Lookup</h3>
+                    <p>
+                        Reverse resolve an IP to any registered domain.
+                    </p>
+                </div>
 
-            <h3><i class="fas fa-server icon"></i> DNS Enumeration</h3>
-            <p>
-                Enter a domain name to pull DNS records.
-            </p>
+                <div class="usage-guide-item">
+                    <h3><i class="fas fa-server icon"></i> DNS Enumeration</h3>
+                    <p>
+                        Enter a domain name to pull DNS records.
+                    </p>
+                </div>
 
-            <h3><i class="fas fa-user-secret icon"></i> GhostPath (Passive Recon)</h3>
-            <p>
-                Use **crt.sh** and **Wayback Machine** to uncover historical data and subdomains.
-            </p>
+                <div class="usage-guide-item">
+                    <h3><i class="fas fa-user-secret icon"></i> GhostPath (Passive Recon)</h3>
+                    <p>
+                        Use <strong>crt.sh</strong> and <strong>Wayback Machine</strong> to uncover historical data and subdomains.
+                    </p>
+                </div>
+            </div>
 
             <hr>
 
-            <h2 id="disclaimer"><i class="fas fa-exclamation-triangle icon"></i> Disclaimer</h2>
-            <p>
-                This tool is for **educational and authorized security research purposes only**. Scanning networks you don't own or lack permission to test is **illegal**.
-            </p>
-            <p>Use responsibly. Stay ethical.</p>
+            <div class="section-card disclaimer-card">
+                <h2 id="disclaimer"><i class="fas fa-exclamation-triangle icon"></i> Disclaimer</h2>
+                <p>
+                    This tool is for <strong>educational and authorized security research purposes only</strong>. Scanning networks you don't own or lack permission to test is <strong>illegal</strong>.
+                </p>
+                <p>Use responsibly. Stay ethical.</p>
+            </div>
+
+            <div class="section-card license-card">
+                <h2 id="license"><i class="fas fa-file-contract icon"></i> License</h2>
+                <p>
+                    This project is licensed under the <strong>BSD 3-Clause License</strong>.
+                    See the <a href="LICENSE" target="_blank">LICENSE</a> file for full details.
+                </p>
+            </div>
 
             <hr>
 
-            <h2 id="license"><i class="fas fa-file-contract icon"></i> License</h2>
-            <p>
-                This project is licensed under the **BSD 3-Clause License**.
-                See the <a href="LICENSE" target="_blank">LICENSE</a> file for full details.
-            </p>
+            <div class="get-involved-section" id="get-involved">
+                <h2><i class="fas fa-users-gear icon"></i> Get Involved & Connect</h2>
 
-            <hr>
+                <div class="contributing-content">
+                    <p>Contributions are welcome! Your ideas, bug fixes, or new features can make ReconX even better.</p>
+                    <p>
+                        Feel free to <strong>fork this repo</strong>, improve or expand features, and open a <strong>pull request</strong>.
+                    </p>
+                    <p>Have ideas? Open an issue or reach out via the contact links below.</p>
+                    <div class="text-center">
+                        <a href="https://github.com/atharvbyadav/ReconX/fork" target="_blank" class="live-demo-button">
+                            <i class="fab fa-github"></i> Fork on GitHub
+                        </a>
+                    </div>
+                </div>
 
-            <h2 id="contributing"><i class="fas fa-hands-helping icon"></i> Contributing</h2>
-            <p>Contributions are welcome!</p>
-            <p>
-                Feel free to **fork this repo**, improve or expand features, and open a **pull request**.
-            </p>
-            <p>Have ideas? Open an issue or reach out via the contact links below.</p>
+                <hr style="background-image: linear-gradient(to right, rgba(0, 224, 179, 0), rgba(0, 224, 179, 0.6), rgba(0, 224, 179, 0)); margin: 3em auto; width: 80%;">
 
-            <hr>
-
-            <h2 id="contact"><i class="fas fa-address-book icon"></i> Contact</h2>
-            <div class="contact-info">
-                <div>
-                    <i class="fas fa-user icon"></i> **Author**: Atharv Yadav
-                </div>
-                <div>
-                    <i class="fas fa-globe-americas icon"></i> **Website**: <a href="https://atharvbyadav.github.io" target="_blank">atharvbyadav.github.io</a>
-                </div>
-                <div>
-                    <i class="fab fa-github icon"></i> **GitHub**: <a href="https://github.com/atharvbyadav" target="_blank">@atharvbyadav</a>
-                </div>
-                <div>
-                    <i class="fab fa-linkedin icon"></i> **LinkedIn**: <a href="https://www.linkedin.com/in/atharvbyadav/" target="_blank">Atharv Yadav</a>
-                </div>
-                <div>
-                    <i class="fab fa-twitter-square icon"></i> **Twitter/X**: <a href="https://x.com/AtharvYadavB" target="_blank">@AtharvYadavB</a>
-                </div>
+                <p style="text-align: center; font-size: 1.1em; color: #d0d0d0; margin-bottom: 2em; position: relative; z-index: 1;">
+                    Have questions, feedback, or just want to say hello? Connect with Atharv Yadav and the project through these channels:
+                </p>
+                <ul class="social-links-grid">
+                    <li><a href="https://atharvbyadav.github.io" target="_blank" class="social-link-item"><i class="fas fa-globe-americas"></i> Website</a></li>
+                    <li><a href="https://github.com/atharvbyadav" target="_blank" class="social-link-item"><i class="fab fa-github"></i> GitHub</a></li>
+                    <li><a href="https://www.linkedin.com/in/atharvbyadav/" target="_blank" class="social-link-item"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    <li><a href="https://x.com/AtharvYadavB" target="_blank" class="social-link-item"><i class="fab fa-twitter-square"></i> Twitter/X</a></li>
+                </ul>
             </div>
 
             <p class="text-center" style="margin-top: 30px; font-style: italic; color: #a0a0a0;">
@@ -511,5 +1237,66 @@ cd ReconX</code></pre>
             </p>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add copy buttons to code blocks
+            document.querySelectorAll('pre code').forEach(function(codeBlock) {
+                var pre = codeBlock.parentNode;
+                var button = document.createElement('button');
+                button.className = 'copy-button';
+                button.textContent = 'Copy';
+                button.setAttribute('aria-label', 'Copy code to clipboard');
+
+                button.addEventListener('click', function() {
+                    var textToCopy = codeBlock.textContent;
+                    navigator.clipboard.writeText(textToCopy).then(function() {
+                        button.textContent = 'Copied!';
+                        setTimeout(function() {
+                            button.textContent = 'Copy';
+                        }, 2000); // Reset button text after 2 seconds
+                    }).catch(function(err) {
+                        console.error('Failed to copy text: ', err);
+                        button.textContent = 'Error!';
+                        setTimeout(function() {
+                            button.textContent = 'Copy';
+                        }, 2000);
+                    });
+                });
+                pre.appendChild(button);
+            });
+
+            // JavaScript for toggling nested navbar items
+            document.querySelectorAll('.navbar .parent-link').forEach(function(parentLink) {
+                parentLink.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent default link behavior
+                    const parentLi = this.closest('li.parent-nav-item');
+                    if (parentLi) {
+                        parentLi.classList.toggle('parent-active');
+                    }
+                });
+            });
+
+            // Optional: Close nested menus when clicking outside or another parent link
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.navbar .parent-nav-item')) {
+                    document.querySelectorAll('.navbar .parent-nav-item.parent-active').forEach(function(activeParent) {
+                        activeParent.classList.remove('parent-active');
+                    });
+                }
+            });
+
+            // Smooth scrolling for all navbar links
+            document.querySelectorAll('.navbar a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>
