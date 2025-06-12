@@ -180,7 +180,7 @@ Have ideas? Open an issue or reach out via the contact links below.
 
 - **👨‍💻 Author**: Atharv Yadav
 - Email: [uuwr5t1s@duck.com](mailto:uuwr5t1s@duck.com)  
-  _Yes, it’s a real email. No, it won’t hatch into a duckling. 🐣📨_
+  _Looks suspicious? Good. It’s mine. The ducks work for me. 🦆💻_
 - **🌐 Website**: [atharvbyadav.github.io](https://atharvbyadav.github.io)
 - **🐙 GitHub**: [@atharvbyadav](https://github.com/atharvbyadav)
 - **🧠 LinkedIn**: [Atharv Yadav](https://www.linkedin.com/in/atharvbyadav/)
