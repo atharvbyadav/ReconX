@@ -179,7 +179,7 @@ Have ideas? Open an issue or reach out via the contact links below.
 ## 📬 Contact
 
 - **👨‍💻 Author**: Atharv Yadav
-- Email: [uuwr5t1s@duck.com](mailto:uuwr5t1s@duck.com)  
+- **📧 Email**: [uuwr5t1s@duck.com](mailto:uuwr5t1s@duck.com)  
   _Looks suspicious? Good. It’s mine. The ducks work for me. 🦆💻_
 - **🌐 Website**: [atharvbyadav.github.io](https://atharvbyadav.github.io)
 - **🐙 GitHub**: [@atharvbyadav](https://github.com/atharvbyadav)
