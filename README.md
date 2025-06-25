@@ -20,8 +20,8 @@
 <table border="0" cellspacing="0" cellpadding="0" style="border: none; width: 100%;">
   <tr>
     <td style="width: 60%; vertical-align: top; padding-right: 20px;">
-      <p><strong>ReconX</strong> is a powerful, all-in-one <strong>network security reconnaissance toolkit</strong> built with a modern <strong>Streamlit web interface</strong>. Designed for <strong>penetration testers, ethical hackers, red teamers</strong>, and <strong>cybersecurity enthusiasts</strong>, ReconX brings together essential active and passive recon techniques in one lightweight, interactive dashboard.</p>
-      <p>Whether you’re prepping for a CTF, conducting OSINT, scanning your own infrastructure, or just learning the ropes, <strong>ReconX empowers you to explore and assess digital footprints — securely, silently, and effectively</strong>.</p>
+      <p><strong>ReconX</strong> is a powerful, all-in-one <strong>network security reconnaissance toolkit</strong> built with a modern <strong>Streamlit web interface</strong>. Designed for <strong>penetration testers, ethical hackers, red teamers</strong> and <strong>cybersecurity enthusiasts</strong>, ReconX brings together essential active and passive recon techniques in one lightweight, interactive dashboard.</p>
+      <p>Whether you’re prepping for a CTF, conducting OSINT, scanning your own infrastructure or just learning the ropes, <strong>ReconX empowers you to explore and assess digital footprints — securely, silently and effectively</strong>.</p>
       🔗 <strong>Live Demo:</strong> <a href="https://reconx.streamlit.app/">ReconX Web App</a><br>
       📂 <strong>Repository:</strong> <a href="https://github.com/atharvbyadav/ReconX">ReconX GitHub</a>
     </td>
@@ -62,7 +62,7 @@
 
 **ReconX** may look like a polished web app — and it is — but under the hood, it’s powered by a well-organized collection of recon logic packed efficiently into a single, maintainable Python script.
 
-Instead of scattering logic across multiple files or scripts, all core functionalities — **Port Scanning**, **OS Fingerprinting**, **WHOIS Lookup**, **DNS Enumeration**, **Reverse DNS**, and **GhostPath** — are implemented as **individual Python classes within one main file**.
+Instead of scattering logic across multiple files or scripts, all core functionalities — **Port Scanning**, **OS Fingerprinting**, **WHOIS Lookup**, **DNS Enumeration**, **Reverse DNS** and **GhostPath** — are implemented as **individual Python classes within one main file**.
 
 This approach provides:
 - A clean, modular structure without file sprawl
@@ -73,10 +73,10 @@ This approach provides:
 
 ### 🌐 Streamlit-Powered UI
 
-The app’s interface is built with **Streamlit**, enabling a fast, reactive, and browser-based frontend. Each recon class is wrapped in Streamlit UI components:
+The app’s interface is built with **Streamlit**, enabling a fast, reactive and browser-based frontend. Each recon class is wrapped in Streamlit UI components:
 - Text inputs for target domains/IPs
 - Buttons to trigger scans
-- Sections with expanders, tables, and logs to display results
+- Sections with expanders, tables and logs to display results
 
 ---
 
@@ -128,7 +128,7 @@ streamlit run ReconX.py
 
 ### 🔸 Port Scanning
 
-Enter the **Target IP**, hit **Scan**, and see open ports, banners, and potential risks.
+Enter the **Target IP**, hit **Scan** and see open ports, banners and potential risks.
 
 ### 🔸 OS Fingerprinting
 
@@ -170,7 +170,7 @@ See the [LICENSE](LICENSE) file for full details.
 ## 🤝 Contributing
 
 Contributions are welcome!
-Feel free to **fork this repo**, improve or expand features, and open a **pull request**.
+Feel free to **fork this repo**, improve or expand features and open a **pull request**.
 
 Have ideas? Open an issue or reach out via the contact links below.
 
