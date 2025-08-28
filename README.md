@@ -26,7 +26,7 @@
       📂 <strong>Repository:</strong> <a href="https://github.com/atharvbyadav/ReconX">ReconX GitHub</a>
     </td>
     <td style="width: 60%; text-align: center; vertical-align: top;">
-      <img src="https://github.com/atharvbyadav/ReconX/blob/main/assets/ReconX.png" alt="ReconX Banner" style="width: 100%; max-width: 420px; height: auto; border-radius: 10px;" />
+      <img src="https://github.com/atharvbyadav/ReconX/blob/main/assets/ReconX.jpeg" alt="ReconX Banner" style="width: 100%; max-width: 420px; height: auto; border-radius: 10px;" />
     </td>
   </tr>
 </table>
